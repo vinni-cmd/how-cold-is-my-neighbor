@@ -1,6 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { calcWindDirection, convertUnixToLocal } from './modules/utilities';
+import { populateWeatherData } from './modules/apis';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Form from './Components/Form/Form';
@@ -9,57 +9,9 @@ function App() {
   const [userWeather, setUserWeather] = useState({});
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      const url = new URL('https://api.openweathermap.org/data/2.5/weather');
-      url.search = new URLSearchParams({
-        appid: '2f2490bb3753f1067ab2e758ffc26e39',
-        units: 'metric',
-        q: 'vancouver',
-      });
-      try {
-        const data = await fetch(url);
-        const response = await data.json();
-        console.log(response);
-        const curatedWeatherDetails = buildAppWeatherObject(response);
-        setUserWeather(curatedWeatherDetails);
-      } catch (error) {
-
-      }
-    }
-    fetchUserData();
-    // console.log(userWeather)
+    populateWeatherData('Yellowknife', setUserWeather);
+    console.log('userweather', userWeather);
   }, []);
-
-  function buildAppWeatherObject(apiResponse) {
-    const {
-      name: city,
-      sys: { country },
-      clouds: { all: cloudCover },
-      main: { temp },
-      main: { feels_like: feelTemp },
-      main: { humidity },
-      wind: { speed: windSpeed },
-    } = apiResponse;
-    const windDirection = calcWindDirection(apiResponse.wind.deg);
-    const sunrise = convertUnixToLocal(apiResponse.sys.sunrise, apiResponse.timezone)
-    const sunset = convertUnixToLocal(apiResponse.sys.sunset, apiResponse.timezone)
-    const conditions = apiResponse.weather.map(condition => condition.description);
-    return {
-      city,
-      country,
-      conditions,
-      temp,
-      feelTemp,
-      windSpeed,
-      windDirection,
-      cloudCover,
-      humidity,
-      sunrise,
-      sunset
-    }
-  }
-
-  console.log('userweather', userWeather);
 
   return (
     <div className="App">
