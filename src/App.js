@@ -1,5 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
 
 function App() {
   const [userWeather, setUserWeather] = useState({});
@@ -24,19 +26,17 @@ function App() {
           main: { temp },
           main: { feels_like: feelTemp },
           wind: { speed: windSpeed },
+          // sunrise
+          // sunset
+          // humidity
         } = response;
 
-        function convertWindUnits(deg) {
-          const val = Math.floor((deg / 22.5) + 0.5);
-          const cardinals = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-          return cardinals[(val % 16)];
-        }
 
-        const windDirection = convertWindUnits(response.wind.deg);
+        const windDirection = calcWindDirection(response.wind.deg);
 
         const conditions = response.weather.map(condition => condition.description);
 
-        setUserWeather({
+        const curatedWeatherDetails = {
           city,
           country,
           conditions,
@@ -45,7 +45,16 @@ function App() {
           windSpeed,
           windDirection,
           cloudCover
-        });
+        }
+
+        setUserWeather(curatedWeatherDetails);
+
+        // helper function found on stackoverflow 
+        function calcWindDirection(degree) {
+          const value = Math.floor((degree / 22.5) + 0.5);
+          const cardinals = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+          return cardinals[(value % 16)];
+        }
 
       } catch (error) {
 
@@ -56,9 +65,11 @@ function App() {
   }, []);
 
   console.log('userweather', userWeather);
+
   return (
     <div className="App">
-      <h1>How Cold Is My Neighbor</h1>
+      <Header />
+      <Footer />
     </div>
   );
 }
