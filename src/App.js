@@ -1,7 +1,9 @@
 import './App.css';
 import { useEffect, useState } from 'react';
+import { calcWindDirection, convertUnixToLocal } from './modules/utilities';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
+import Form from './Components/Form/Form';
 
 function App() {
   const [userWeather, setUserWeather] = useState({});
@@ -12,50 +14,14 @@ function App() {
       url.search = new URLSearchParams({
         appid: '2f2490bb3753f1067ab2e758ffc26e39',
         units: 'metric',
-        q: 'leduc',
+        q: 'vancouver',
       });
       try {
         const data = await fetch(url);
         const response = await data.json();
         console.log(response);
-
-        const {
-          name: city,
-          sys: { country },
-          clouds: { all: cloudCover },
-          main: { temp },
-          main: { feels_like: feelTemp },
-          wind: { speed: windSpeed },
-          // sunrise
-          // sunset
-          // humidity
-        } = response;
-
-
-        const windDirection = calcWindDirection(response.wind.deg);
-
-        const conditions = response.weather.map(condition => condition.description);
-
-        const curatedWeatherDetails = {
-          city,
-          country,
-          conditions,
-          temp,
-          feelTemp,
-          windSpeed,
-          windDirection,
-          cloudCover
-        }
-
+        const curatedWeatherDetails = buildAppWeatherObject(response);
         setUserWeather(curatedWeatherDetails);
-
-        // helper function found on stackoverflow 
-        function calcWindDirection(degree) {
-          const value = Math.floor((degree / 22.5) + 0.5);
-          const cardinals = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-          return cardinals[(value % 16)];
-        }
-
       } catch (error) {
 
       }
@@ -64,11 +30,41 @@ function App() {
     // console.log(userWeather)
   }, []);
 
+  function buildAppWeatherObject(apiResponse) {
+    const {
+      name: city,
+      sys: { country },
+      clouds: { all: cloudCover },
+      main: { temp },
+      main: { feels_like: feelTemp },
+      main: { humidity },
+      wind: { speed: windSpeed },
+    } = apiResponse;
+    const windDirection = calcWindDirection(apiResponse.wind.deg);
+    const sunrise = convertUnixToLocal(apiResponse.sys.sunrise, apiResponse.timezone)
+    const sunset = convertUnixToLocal(apiResponse.sys.sunset, apiResponse.timezone)
+    const conditions = apiResponse.weather.map(condition => condition.description);
+    return {
+      city,
+      country,
+      conditions,
+      temp,
+      feelTemp,
+      windSpeed,
+      windDirection,
+      cloudCover,
+      humidity,
+      sunrise,
+      sunset
+    }
+  }
+
   console.log('userweather', userWeather);
 
   return (
     <div className="App">
       <Header />
+      <Form />
       <Footer />
     </div>
   );
