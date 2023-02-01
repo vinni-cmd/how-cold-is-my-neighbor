@@ -1,21 +1,27 @@
+import { useState } from 'react';
 import './Form.css'
 
-const Form = () => {
+const Form = ({ handleFormSubmission }) => {
+  const [userCity, setUserCity] = useState('')
+
   return (
-    <form>
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      handleFormSubmission(userCity);
+    }}>
       <fieldset>
         <legend>Login credentials</legend>
         <label htmlFor="userName">User Name: </label>
-        <input type="text" name="userName" id="userName" required />
+        <input type="text" name="userName" id="userName" />
         <label htmlFor="userPassword">User Name: </label>
-        <input type="password" name="userPassword" id="userPassword" required />
+        <input type="password" name="userPassword" id="userPassword" />
       </fieldset>
       <fieldset>
         <legend>Select your locations</legend>
         <label htmlFor="userCity">Your location: </label>
-        <input type="text" name="userCity" id="userCity" required />
+        <input type="text" name="userCity" id="userCity" onChange={(e) => { setUserCity(e.target.value) }} value={userCity} />
         <label htmlFor="neighborCity">Your neighbor's location: </label>
-        <input type="text" name="neighborCity" id="neighborCity" required />
+        <input type="text" name="neighborCity" id="neighborCity" />
       </fieldset>
       <fieldset>
         <legend>Weather details</legend>
@@ -37,6 +43,7 @@ const Form = () => {
         <input type="checkbox" name="preference" id="preference" />
         <label htmlFor="preference">Remember preferences</label>
       </fieldset>
+      <button type="submit">Submit</button>
     </form>
   )
 }

@@ -8,15 +8,15 @@ import Form from './Components/Form/Form';
 function App() {
   const [userWeather, setUserWeather] = useState({});
 
-  useEffect(() => {
+  const handleFormSubmission = (submission) => {
     populateWeatherData('Yellowknife', setUserWeather);
     console.log('userweather', userWeather);
-  }, []);
+  }
 
   return (
     <div className="App">
       <Header />
-      <Form />
+      <Form handleFormSubmission={handleFormSubmission} />
       <Footer />
     </div>
   );
