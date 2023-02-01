@@ -29,7 +29,6 @@ function App() {
           // sunrise
           // sunset
           // humidity
-          // more
         } = response;
 
 
