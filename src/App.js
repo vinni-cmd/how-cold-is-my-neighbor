@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { populateWeatherData } from './modules/apis';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
