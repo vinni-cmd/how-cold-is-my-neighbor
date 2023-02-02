@@ -7,10 +7,15 @@ import Form from './Components/Form/Form';
 
 function App() {
   const [userWeather, setUserWeather] = useState({});
+  const [neighborWeather, setNeighborWeather] = useState({});
 
-  const handleFormSubmission = (submission) => {
-    populateWeatherData('Yellowknife', setUserWeather);
+  const handleFormSubmission = (formData) => {
+    const { userCity, neighborCity, weatherDetails } = formData;
+    populateWeatherData(userCity, setUserWeather);
+    populateWeatherData(neighborCity, setNeighborWeather);
     console.log('userweather', userWeather);
+    console.log('neighborweather', neighborWeather)
+    console.log(weatherDetails);
   }
 
   return (

@@ -2,26 +2,34 @@ import { useState } from 'react';
 import './Form.css'
 
 const Form = ({ handleFormSubmission }) => {
-  const [userCity, setUserCity] = useState('')
+  const [userCity, setUserCity] = useState('');
+  const [neighborCity, setNeighborCity] = useState('');
+  // control states checed useState(false) and in input chekced={statenamehere}
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const formDataObj = Object.fromEntries(formData.entries());
+    console.log('Form Data', formDataObj)
+    // return {userCity, neighborCity, weatherDetails}
+  }
 
   return (
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      handleFormSubmission(userCity);
-    }}>
-      <fieldset>
+    <form onSubmit={handleSubmit}>
+      {/* <fieldset>
         <legend>Login credentials</legend>
         <label htmlFor="userName">User Name: </label>
         <input type="text" name="userName" id="userName" />
         <label htmlFor="userPassword">User Name: </label>
         <input type="password" name="userPassword" id="userPassword" />
-      </fieldset>
+      </fieldset> */}
       <fieldset>
         <legend>Select your locations</legend>
         <label htmlFor="userCity">Your location: </label>
         <input type="text" name="userCity" id="userCity" onChange={(e) => { setUserCity(e.target.value) }} value={userCity} />
         <label htmlFor="neighborCity">Your neighbor's location: </label>
-        <input type="text" name="neighborCity" id="neighborCity" />
+        <input type="text" name="neighborCity" id="neighborCity" value={neighborCity} onChange={(e) => { setNeighborCity(e.target.value) }} />
       </fieldset>
       <fieldset>
         <legend>Weather details</legend>
@@ -38,11 +46,11 @@ const Form = ({ handleFormSubmission }) => {
         <input type="checkbox" name="twilight" id="twilight" />
         <label htmlFor="twilight">Twilight</label>
       </fieldset>
-      <fieldset>
+      {/* <fieldset>
         <legend>Admin</legend>
         <input type="checkbox" name="preference" id="preference" />
         <label htmlFor="preference">Remember preferences</label>
-      </fieldset>
+      </fieldset> */}
       <button type="submit">Submit</button>
     </form>
   )
