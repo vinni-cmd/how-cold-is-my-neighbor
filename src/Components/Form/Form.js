@@ -4,7 +4,6 @@ import './Form.css'
 const Form = ({ handleFormSubmission }) => {
   const [userCity, setUserCity] = useState('');
   const [neighborCity, setNeighborCity] = useState('');
-  // control states checed useState(false) and in input chekced={statenamehere}
   const [weatherDetails, setWeatherDetails] = useState({
     temp: false,
     cloudCover: false,
@@ -23,7 +22,7 @@ const Form = ({ handleFormSubmission }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    return { userCity, neighborCity, weatherDetails }
+    handleFormSubmission({ userCity, neighborCity, weatherDetails });
   }
 
   return (

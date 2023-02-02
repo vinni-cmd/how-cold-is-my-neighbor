@@ -13,8 +13,9 @@ function App() {
     const { userCity, neighborCity, weatherDetails } = formData;
     populateWeatherData(userCity, setUserWeather);
     populateWeatherData(neighborCity, setNeighborWeather);
+    // nothing to show because async functon- now need to make another async op for filtering data to pref or feed preferences down to curate function but conisde rthat you might like having access to the raw curated list in case user changes mind. dont wana do another ap call
     console.log('userweather', userWeather);
-    console.log('neighborweather', neighborWeather)
+    console.log('neighborweather', neighborWeather);
     console.log(weatherDetails);
   }
 
