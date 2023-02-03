@@ -5,8 +5,8 @@ const Form = ({ handleFormSubmission }) => {
   const [userCity, setUserCity] = useState('');
   const [neighborCity, setNeighborCity] = useState('');
   const [weatherDetails, setWeatherDetails] = useState({
-    temp: false,
-    cloudCover: false,
+    temperature: false,
+    cloud: false,
     wind: false,
     humidity: false,
     twilight: false,
@@ -43,16 +43,17 @@ const Form = ({ handleFormSubmission }) => {
       </fieldset>
       <fieldset>
         <legend>Weather details</legend>
+        {/* just make a button styled like input? */}
         {/* <input type="checkbox" name="allWeather" id="allWeather" />
         <label htmlFor="allWeather">All</label> */}
-        <input type="checkbox" name="temp" id="temp" checked={weatherDetails.temp} onChange={handleInputChange} />
-        <label htmlFor="temp">Temperature</label>
-        <input type="checkbox" name="cloudCover" id="cloudCover" checked={weatherDetails.cloudCover} onChange={handleInputChange} />
-        <label htmlFor="cloudCover">Clouds</label>
+        <input type="checkbox" name="temperature" id="temperature" checked={weatherDetails.temperature} onChange={handleInputChange} />
+        <label htmlFor="temperature">Temperature</label>
         <input type="checkbox" name="wind" id="wind" checked={weatherDetails.wind} onChange={handleInputChange} />
         <label htmlFor="wind">Wind</label>
         <input type="checkbox" name="humidity" id="humidity" checked={weatherDetails.humidity} onChange={handleInputChange} />
         <label htmlFor="humidity">Humidity</label>
+        <input type="checkbox" name="cloud" id="cloud" checked={weatherDetails.cloud} onChange={handleInputChange} />
+        <label htmlFor="cloud">Clouds</label>
         <input type="checkbox" name="twilight" id="twilight" checked={weatherDetails.twilight} onChange={handleInputChange} />
         <label htmlFor="twilight">Twilight</label>
       </fieldset>
