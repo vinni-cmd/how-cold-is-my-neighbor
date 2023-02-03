@@ -26,7 +26,9 @@ function App() {
     <div className="App">
       <Header />
       <Form handleFormSubmission={handleFormSubmission} />
-      <Results userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} />
+      {
+        (Object.keys(userWeather).length && Object.keys(neighborWeather).length) ? <Results userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} /> : null
+      }
       <Footer />
     </div>
   );

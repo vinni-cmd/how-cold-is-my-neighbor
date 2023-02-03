@@ -37,9 +37,9 @@ const Form = ({ handleFormSubmission }) => {
       <fieldset>
         <legend>Select your locations</legend>
         <label htmlFor="userCity">Your location: </label>
-        <input type="text" name="userCity" id="userCity" onChange={(e) => { setUserCity(e.target.value) }} value={userCity} />
+        <input type="text" name="userCity" id="userCity" onChange={(e) => { setUserCity(e.target.value) }} value={userCity} required />
         <label htmlFor="neighborCity">Your neighbor's location: </label>
-        <input type="text" name="neighborCity" id="neighborCity" value={neighborCity} onChange={(e) => { setNeighborCity(e.target.value) }} />
+        <input type="text" name="neighborCity" id="neighborCity" value={neighborCity} onChange={(e) => { setNeighborCity(e.target.value) }} required />
       </fieldset>
       <fieldset>
         <legend>Weather details</legend>
