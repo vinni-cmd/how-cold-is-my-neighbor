@@ -4,15 +4,18 @@ import { populateWeatherData } from './modules/apis';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Form from './Components/Form/Form';
+import Results from './Components/Results/Results';
 
 function App() {
   const [userWeather, setUserWeather] = useState({});
   const [neighborWeather, setNeighborWeather] = useState({});
+  const [weatherSelection, setWeatherSelection] = useState({});
 
   const handleFormSubmission = (formData) => {
     const { userCity, neighborCity, weatherDetails } = formData;
     populateWeatherData(userCity, setUserWeather);
     populateWeatherData(neighborCity, setNeighborWeather);
+    setWeatherSelection(weatherDetails);
     // nothing to show because async functon- now need to make another async op for filtering data to pref or feed preferences down to curate function but conisde rthat you might like having access to the raw curated list in case user changes mind. dont wana do another ap call
     console.log('userweather', userWeather);
     console.log('neighborweather', neighborWeather);
@@ -23,6 +26,7 @@ function App() {
     <div className="App">
       <Header />
       <Form handleFormSubmission={handleFormSubmission} />
+      <Results userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} />
       <Footer />
     </div>
   );
