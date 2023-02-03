@@ -4,13 +4,18 @@ import './Form.css'
 const Form = ({ handleFormSubmission }) => {
   const [userCity, setUserCity] = useState('');
   const [neighborCity, setNeighborCity] = useState('');
-  const [weatherDetails, setWeatherDetails] = useState({
+
+  // form reset button does not by default reset state
+  const defaultWeatherDetails = {
     temperatureSelected: false,
     cloudSelected: false,
     windSelected: false,
     humiditySelected: false,
     twilightSelected: false,
-  });
+  }
+
+  const [weatherDetails, setWeatherDetails] = useState({ defaultWeatherDetails });
+
 
   const handleInputChange = (e) => {
     const { name, checked } = e.target
@@ -23,6 +28,12 @@ const Form = ({ handleFormSubmission }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleFormSubmission({ userCity, neighborCity, weatherDetails });
+  }
+
+  const handleReset = () => {
+    setUserCity('');
+    setNeighborCity('');
+    setWeatherDetails(defaultWeatherDetails);
   }
 
   return (
@@ -84,6 +95,7 @@ const Form = ({ handleFormSubmission }) => {
         <label htmlFor="preference">Remember preferences</label>
       </fieldset> */}
       <button type="submit">Submit</button>
+      <button type="reset" onClick={handleReset}>Reset</button>
     </form>
   )
 }
