@@ -31,8 +31,8 @@ const Results = ({ userWeather, neighborWeather, weatherSelection }) => {
       <h2>Results</h2>
       <div class="results-breakdown">
         <CityResult cityWeather={userWeather} weatherSelection={weatherSelection} />
-        <Comparison userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} />
         <CityResult cityWeather={neighborWeather} weatherSelection={weatherSelection} />
+        <Comparison userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} />
       </div>
     </section>
   )

@@ -26,39 +26,43 @@ const CityResult = ({ cityWeather, weatherSelection }) => {
     // add conditional css class here mentioned in first lessons on react
     <div>
       <h3>{city}, {country}</h3>
-
-      {/* // not actually an array so maybe push into one earlier or do some string trickery */}
-      <p>{conditions}</p>
       <ul>
         {
           !temperatureSelected ? null : (
-            <li>User Temp is {temp} degrees C which feels like {feelTemp} C</li>
+            <>
+              <li>Temperature {temp}°<span class="sub">C</span>
+              </li>
+              <li>Feels like {feelTemp}°<span class="sub">C</span></li>
+            </>
           )
         }
         {
           !windSelected ? null : (
-            <li>User wind is {windDirection} {windSpeed} meter/sec</li>
+            <li>Wind {windDirection} {windSpeed} m/s</li>
           )
         }
         {
           !humiditySelected ? null : (
-            <li>Humidity {humidityPerc} %</li>
+            <li>Humidity {humidityPerc}%</li>
           )
         }
         {
           !cloudSelected ? null : (
-            <li>Cloud cover is {cloudCover} %</li>
+            <li>Cloud Cover {cloudCover}%</li>
           )
         }
         {
           !twilightSelected ? null : (
             <>
-              <li>Sunrise is {sunrise}</li>
-              <li>Sunset is {sunset}</li>
+              <li>Sunrise {sunrise}</li>
+              <li>Sunset {sunset}</li>
             </>
           )
         }
       </ul>
+      {
+        conditions.map(condition => <p>{condition}</p>)
+      }
     </div>
   )
 }
