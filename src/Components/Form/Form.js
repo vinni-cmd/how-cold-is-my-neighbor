@@ -5,11 +5,11 @@ const Form = ({ handleFormSubmission }) => {
   const [userCity, setUserCity] = useState('');
   const [neighborCity, setNeighborCity] = useState('');
   const [weatherDetails, setWeatherDetails] = useState({
-    temperature: false,
-    cloud: false,
-    wind: false,
-    humidity: false,
-    twilight: false,
+    temperatureSelected: false,
+    cloudSelected: false,
+    windSelected: false,
+    humiditySelected: false,
+    twilightSelected: false,
   });
 
   const handleInputChange = (e) => {
@@ -67,15 +67,15 @@ const Form = ({ handleFormSubmission }) => {
         {/* just make a button styled like input? */}
         {/* <input type="checkbox" name="allWeather" id="allWeather" />
         <label htmlFor="allWeather">All</label> */}
-        <input type="checkbox" name="temperature" id="temperature" checked={weatherDetails.temperature} onChange={handleInputChange} />
+        <input type="checkbox" name="temperatureSelected" id="temperature" checked={weatherDetails.temperature} onChange={handleInputChange} />
         <label htmlFor="temperature">Temperature</label>
-        <input type="checkbox" name="wind" id="wind" checked={weatherDetails.wind} onChange={handleInputChange} />
+        <input type="checkbox" name="windSelected" id="wind" checked={weatherDetails.wind} onChange={handleInputChange} />
         <label htmlFor="wind">Wind</label>
-        <input type="checkbox" name="humidity" id="humidity" checked={weatherDetails.humidity} onChange={handleInputChange} />
+        <input type="checkbox" name="humiditySelected" id="humidity" checked={weatherDetails.humidity} onChange={handleInputChange} />
         <label htmlFor="humidity">Humidity</label>
-        <input type="checkbox" name="cloud" id="cloud" checked={weatherDetails.cloud} onChange={handleInputChange} />
+        <input type="checkbox" name="cloudSelected" id="cloud" checked={weatherDetails.cloud} onChange={handleInputChange} />
         <label htmlFor="cloud">Clouds</label>
-        <input type="checkbox" name="twilight" id="twilight" checked={weatherDetails.twilight} onChange={handleInputChange} />
+        <input type="checkbox" name="twilightSelected" id="twilight" checked={weatherDetails.twilight} onChange={handleInputChange} />
         <label htmlFor="twilight">Twilight</label>
       </fieldset>
       {/* <fieldset>
