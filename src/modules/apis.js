@@ -24,7 +24,7 @@ function buildAppWeatherObject(apiResponse) {
     clouds: { all: cloudCover },
     main: { temp },
     main: { feels_like: feelTemp },
-    main: { humidity },
+    main: { humidity: humidityPerc },
     wind: { speed: windSpeed },
   } = apiResponse;
   const windDirection = calcWindDirection(apiResponse.wind.deg);
@@ -40,7 +40,7 @@ function buildAppWeatherObject(apiResponse) {
     windSpeed,
     windDirection,
     cloudCover,
-    humidity,
+    humidityPerc,
     sunrise,
     sunset
   }
