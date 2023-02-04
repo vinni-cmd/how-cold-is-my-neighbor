@@ -1,3 +1,11 @@
+import { FaWind, FaCloudSun, FaTemperatureHigh, FaGrinBeamSweat, FaRegGrinBeamSweat } from 'react-icons/fa';
+import { FiSunrise, FiSunset } from 'react-icons/fi'
+import { WiHumidity } from 'react-icons/wi'
+import { BsCloudSunFill, BsCloudSun } from 'react-icons/bs'
+import { TbTemperatureCelsius, TbTemperature } from 'react-icons/tb'
+import { CiTempHigh } from 'react-icons/ci'
+import { GiClothes } from 'react-icons/gi'
+
 const CityResult = ({ cityWeather, weatherSelection }) => {
 
   const {
@@ -30,32 +38,32 @@ const CityResult = ({ cityWeather, weatherSelection }) => {
         {
           !temperatureSelected ? null : (
             <>
-              <li>Temperature {temp}°<span class="sub">C</span>
+              <li> <TbTemperature /> <CiTempHigh /> <FaTemperatureHigh />Temperature {temp}°<span class="sub">C</span><TbTemperatureCelsius />
               </li>
-              <li>Feels like {feelTemp}°<span class="sub">C</span></li>
+              <li><GiClothes /> Feels like {feelTemp}°<span class="sub">C</span></li>
             </>
           )
         }
         {
           !windSelected ? null : (
-            <li>Wind {windDirection} {windSpeed} m/s</li>
+            <li> <FaWind /> Wind {windDirection} {windSpeed} m/s</li>
           )
         }
         {
           !humiditySelected ? null : (
-            <li>Humidity {humidityPerc}%</li>
+            <li><WiHumidity /> <FaGrinBeamSweat /> <FaRegGrinBeamSweat /> Humidity {humidityPerc}%</li>
           )
         }
         {
           !cloudSelected ? null : (
-            <li>Cloud Cover {cloudCover}%</li>
+            <li><BsCloudSunFill /> <FaCloudSun /> <BsCloudSun /> Cloud Cover {cloudCover}%</li>
           )
         }
         {
           !twilightSelected ? null : (
             <>
-              <li>Sunrise {sunrise}</li>
-              <li>Sunset {sunset}</li>
+              <li><FiSunrise /> Sunrise {sunrise}</li>
+              <li><FiSunset /> Sunset {sunset}</li>
             </>
           )
         }
