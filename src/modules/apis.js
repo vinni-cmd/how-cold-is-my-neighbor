@@ -1,4 +1,4 @@
-import { calcWindDirection, convertUnixToLocal } from "./utilities";
+import { calcWindDirection, getLocalTime, calcTimeDiffInMin } from "./utilities";
 
 const populateWeatherData = async (location, setStateFunction) => {
   const url = new URL('https://api.openweathermap.org/data/2.5/weather');
@@ -28,8 +28,9 @@ function buildAppWeatherObject(apiResponse) {
     wind: { speed: windSpeed },
   } = apiResponse;
   const windDirection = calcWindDirection(apiResponse.wind.deg);
-  const sunrise = convertUnixToLocal(apiResponse.sys.sunrise, apiResponse.timezone)
-  const sunset = convertUnixToLocal(apiResponse.sys.sunset, apiResponse.timezone)
+  const sunrise = getLocalTime(apiResponse.sys.sunrise, apiResponse.timezone);
+  const sunset = getLocalTime(apiResponse.sys.sunset, apiResponse.timezone);
+  const daylightInMin = calcTimeDiffInMin(apiResponse.sys.sunrise, apiResponse.sys.sunset, apiResponse.timezone)
   const conditions = apiResponse.weather.map(condition => condition.description);
   return {
     city,
@@ -42,7 +43,8 @@ function buildAppWeatherObject(apiResponse) {
     cloudCover,
     humidityPerc,
     sunrise,
-    sunset
+    sunset,
+    daylightInMin
   }
 }
 

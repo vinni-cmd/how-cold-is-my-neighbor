@@ -11,21 +11,23 @@ function App() {
   const [neighborWeather, setNeighborWeather] = useState({});
   const [weatherSelection, setWeatherSelection] = useState({});
 
-  const handleFormSubmission = (formData) => {
-    const { userCity, neighborCity, weatherDetails } = formData;
+  const handleFormSubmission = ({ userCity, neighborCity, weatherDetails }) => {
     populateWeatherData(userCity, setUserWeather);
     populateWeatherData(neighborCity, setNeighborWeather);
     setWeatherSelection(weatherDetails);
-    // nothing to show because async functon- now need to make another async op for filtering data to pref or feed preferences down to curate function but conisde rthat you might like having access to the raw curated list in case user changes mind. dont wana do another ap call
-    console.log('userweather', userWeather);
-    console.log('neighborweather', neighborWeather);
-    console.log(weatherDetails);
+  }
+
+  // handles reset event (from form) in results component but not currently working
+  const handleFormReset = () => {
+    setNeighborWeather({});
+    setUserWeather({});
+    setWeatherSelection({});
   }
 
   return (
     <div className="App">
       <Header />
-      <Form handleFormSubmission={handleFormSubmission} />
+      <Form handleFormSubmission={handleFormSubmission} handleFormReset={handleFormReset} />
       {
         (Object.keys(userWeather).length && Object.keys(neighborWeather).length) ? <Results userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} /> : null
       }

@@ -1,11 +1,19 @@
+import { FaWind, FaCloudSun, FaTemperatureHigh, FaGrinBeamSweat, FaRegGrinBeamSweat } from 'react-icons/fa';
+import { FiSunrise, FiSunset } from 'react-icons/fi'
+import { WiHumidity } from 'react-icons/wi'
+import { BsCloudSunFill, BsCloudSun } from 'react-icons/bs'
+import { TbTemperatureCelsius, TbTemperature } from 'react-icons/tb'
+import { CiTempHigh } from 'react-icons/ci'
+import { GiClothes } from 'react-icons/gi'
+
 const CityResult = ({ cityWeather, weatherSelection }) => {
 
   const {
-    temperature,
-    cloud,
-    wind,
-    humidity,
-    twilight
+    temperatureSelected,
+    cloudSelected,
+    windSelected,
+    humiditySelected,
+    twilightSelected
   } = weatherSelection
 
   const {
@@ -26,40 +34,43 @@ const CityResult = ({ cityWeather, weatherSelection }) => {
     // add conditional css class here mentioned in first lessons on react
     <div>
       <h3>{city}, {country}</h3>
-      {
-        // not actually an array so maybe push into one earlier or do some string trickery
-        <p>{conditions}</p>
-      }
       <ul>
         {
-          !temperature ? null : (
-            <li>User Temp is {temp} degrees C which feels like {feelTemp} C</li>
-          )
-        }
-        {
-          !wind ? null : (
-            <li>User wind is {windDirection} {windSpeed} meter/sec</li>
-          )
-        }
-        {
-          !humidity ? null : (
-            <li>Humidity {humidityPerc} %</li>
-          )
-        }
-        {
-          !cloud ? null : (
-            <li>Cloud cover is {cloudCover} %</li>
-          )
-        }
-        {
-          !twilight ? null : (
+          !temperatureSelected ? null : (
             <>
-              <li>Sunrise is {sunrise}</li>
-              <li>Sunset is {sunset}</li>
+              <li> <TbTemperature /> <CiTempHigh /> <FaTemperatureHigh />Temperature {temp}°<span class="sub">C</span><TbTemperatureCelsius />
+              </li>
+              <li><GiClothes /> Feels like {feelTemp}°<span class="sub">C</span></li>
+            </>
+          )
+        }
+        {
+          !windSelected ? null : (
+            <li> <FaWind /> Wind {windDirection} {windSpeed} m/s</li>
+          )
+        }
+        {
+          !humiditySelected ? null : (
+            <li><WiHumidity /> <FaGrinBeamSweat /> <FaRegGrinBeamSweat /> Humidity {humidityPerc}%</li>
+          )
+        }
+        {
+          !cloudSelected ? null : (
+            <li><BsCloudSunFill /> <FaCloudSun /> <BsCloudSun /> Cloud Cover {cloudCover}%</li>
+          )
+        }
+        {
+          !twilightSelected ? null : (
+            <>
+              <li><FiSunrise /> Sunrise {sunrise}</li>
+              <li><FiSunset /> Sunset {sunset}</li>
             </>
           )
         }
       </ul>
+      {
+        conditions.map(condition => <p>{condition}</p>)
+      }
     </div>
   )
 }

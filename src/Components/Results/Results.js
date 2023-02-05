@@ -1,4 +1,5 @@
 import CityResult from './CityResult';
+import Comparison from './Comparison';
 import './Results.css'
 
 const Results = ({ userWeather, neighborWeather, weatherSelection }) => {
@@ -16,15 +17,23 @@ const Results = ({ userWeather, neighborWeather, weatherSelection }) => {
   // const selectedWeather = buildTruthyArray(weatherSelection);
   // console.log(selectedWeather)
 
+  // maybe ths should be in a useffect but it only runs on after results are returned?
+  function calculateComparison(userWeather, neighborWeather, weatherSelection) {
+    const comparison = {};
+    // check which values need to be compared based on user weather details selection
+
+    // for those details create a key and calculate the associated value by subtracting/comparing relevent property values from the two cities
+    return comparison
+  }
 
   return (
     <section className="results">
       <h2>Results</h2>
-      <CityResult cityWeather={userWeather} weatherSelection={weatherSelection} />
-      <div>
-        <h3>Comparison</h3>
+      <div class="results-breakdown">
+        <CityResult cityWeather={userWeather} weatherSelection={weatherSelection} />
+        <CityResult cityWeather={neighborWeather} weatherSelection={weatherSelection} />
+        <Comparison userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} />
       </div>
-      <CityResult cityWeather={neighborWeather} weatherSelection={weatherSelection} />
     </section>
   )
 }
