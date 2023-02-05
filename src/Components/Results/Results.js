@@ -1,6 +1,5 @@
 import CityResult from './CityResult';
 import Comparison from './Comparison';
-import './Results.css'
 
 const Results = ({ userWeather, neighborWeather, weatherSelection, setApiCallInProgress }) => {
 

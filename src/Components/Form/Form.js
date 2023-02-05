@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import CityDatalist from './Datalist';
-import './Form.css'
 
 const Form = ({ handleFormSubmission, handleFormReset }) => {
   const [userCity, setUserCity] = useState('');

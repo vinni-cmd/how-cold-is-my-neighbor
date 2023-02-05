@@ -39,16 +39,18 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Form handleFormSubmission={handleFormSubmission} handleFormReset={handleFormReset} />
-      {
-        apiCallInProgress ? <Loading /> : null
-      }
-      {
-        errorMessage ? <Error errorMessage={errorMessage} setApiCallInProgress={setApiCallInProgress} /> : null
-      }
-      {
-        (Object.keys(userWeather).length && Object.keys(neighborWeather).length) ? <Results userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} setApiCallInProgress={setApiCallInProgress} /> : null
-      }
+      <main className='wrapper'>
+        <Form handleFormSubmission={handleFormSubmission} handleFormReset={handleFormReset} />
+        {
+          apiCallInProgress ? <Loading /> : null
+        }
+        {
+          errorMessage ? <Error errorMessage={errorMessage} setApiCallInProgress={setApiCallInProgress} /> : null
+        }
+        {
+          (Object.keys(userWeather).length && Object.keys(neighborWeather).length) ? <Results userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} setApiCallInProgress={setApiCallInProgress} /> : null
+        }
+      </main>
       <Footer />
     </div>
   );

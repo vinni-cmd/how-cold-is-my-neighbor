@@ -1,5 +1,4 @@
-import { FaWind } from 'react-icons/fa';
-import './Footer.css'
+import { SiSnowflake } from 'react-icons/si'
 
 const Footer = () => {
   return (
@@ -7,7 +6,7 @@ const Footer = () => {
       <p>
         Created by <a href="https://vincentyoung.dev/" target="_blank" rel="noreferrer">Vincent</a> at <a href="https://junocollege.com/" target="_blank" rel="noreferrer">Juno College</a>
       </p>
-      <FaWind />
+      <SiSnowflake />
     </footer>
   )
 }
