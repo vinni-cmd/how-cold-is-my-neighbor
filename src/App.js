@@ -5,20 +5,24 @@ import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Form from './Components/Form/Form';
 import Results from './Components/Results/Results';
+import Error from './Components/Error/Error';
 
 function App() {
   const [userWeather, setUserWeather] = useState({});
   const [neighborWeather, setNeighborWeather] = useState({});
   const [weatherSelection, setWeatherSelection] = useState({});
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleFormSubmission = ({ userCity, neighborCity, weatherDetails }) => {
-    populateWeatherData(userCity, setUserWeather);
-    populateWeatherData(neighborCity, setNeighborWeather);
+    setErrorMessage('');
+    populateWeatherData(userCity, setUserWeather, setErrorMessage);
+    populateWeatherData(neighborCity, setNeighborWeather, setErrorMessage);
     setWeatherSelection(weatherDetails);
   }
 
   // handles reset event (from form) in results component but not currently working
   const handleFormReset = () => {
+    setErrorMessage('');
     setNeighborWeather({});
     setUserWeather({});
     setWeatherSelection({});
@@ -28,6 +32,9 @@ function App() {
     <div className="App">
       <Header />
       <Form handleFormSubmission={handleFormSubmission} handleFormReset={handleFormReset} />
+      {
+        errorMessage ? <Error errorMessage={errorMessage} /> : null
+      }
       {
         (Object.keys(userWeather).length && Object.keys(neighborWeather).length) ? <Results userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} /> : null
       }
@@ -46,7 +53,7 @@ export default App;
 // - userQuery: userCity
 // - userQuery: neighborCity
 // - userQuery: weatherDetails {object consisting of user weather detail preferences}
-// is it better to split out the above into separate states or is a single state sufficient? Think I can just access the properties inside of the object when I need them.    
+// is it better to split out the above into separate states or is a single state sufficient? Think I can just access the properties inside of the object when I need them.
 
 // A local method (handleUserCityChange) to handle the onChange event to update state (userCity) with user input
 
