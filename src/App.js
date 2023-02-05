@@ -11,25 +11,30 @@ function App() {
   const [neighborWeather, setNeighborWeather] = useState({});
   const [weatherSelection, setWeatherSelection] = useState({});
 
-  const handleFormSubmission = (formData) => {
-    const { userCity, neighborCity, weatherDetails } = formData;
-    console.log('usercity', userCity)
-    // handles reset event (from form) in results component but not currently working
-    if (userCity === '') {
-      setUserWeather({});
-      setNeighborWeather({});
-    }
-    else {
-      populateWeatherData(userCity, setUserWeather);
-      populateWeatherData(neighborCity, setNeighborWeather);
-    }
+  const handleFormSubmission = ({ userCity, neighborCity, weatherDetails }) => {
+    populateWeatherData(userCity, setUserWeather);
+    populateWeatherData(neighborCity, setNeighborWeather);
     setWeatherSelection(weatherDetails);
+  }
+
+  // handles reset event (from form) in results component but not currently working
+  const handleFormReset = () => {
+    setNeighborWeather({});
+    setUserWeather({});
+    setWeatherSelection({
+      allWeatherSelected: false,
+      temperatureSelected: false,
+      cloudSelected: false,
+      windSelected: false,
+      humiditySelected: false,
+      twilightSelected: false,
+    });
   }
 
   return (
     <div className="App">
       <Header />
-      <Form handleFormSubmission={handleFormSubmission} />
+      <Form handleFormSubmission={handleFormSubmission} handleFormReset={handleFormReset} />
       {
         (Object.keys(userWeather).length && Object.keys(neighborWeather).length) ? <Results userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} /> : null
       }

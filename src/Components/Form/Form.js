@@ -2,12 +2,13 @@ import { useState } from 'react';
 import CityDatalist from './Datalist';
 import './Form.css'
 
-const Form = ({ handleFormSubmission }) => {
+const Form = ({ handleFormSubmission, handleFormReset }) => {
   const [userCity, setUserCity] = useState('');
   const [neighborCity, setNeighborCity] = useState('');
 
   // form reset button does not by default reset state
   const defaultWeatherDetails = {
+    allWeatherSelected: false,
     temperatureSelected: false,
     cloudSelected: false,
     windSelected: false,
@@ -50,6 +51,7 @@ const Form = ({ handleFormSubmission }) => {
     setUserCity('');
     setNeighborCity('');
     setWeatherDetails(defaultWeatherDetails);
+    handleFormReset();
     // handleFormSubmission({ userCity, neighborCity, weatherDetails })
   }
 
@@ -75,8 +77,8 @@ const Form = ({ handleFormSubmission }) => {
         {/* just make a button styled like input? */}
         {/* <input type="checkbox" name="allWeather" id="allWeather" />
         <label htmlFor="allWeather">All</label> */}
-        <input type="checkbox" id="allWeather" name='allWeather' onClick={handleAllClick} />
-        <label htmlFor="allWeather">All</label>
+        <input type="checkbox" id="allWeatherSelected" name='allWeatherSelected' onClick={handleAllClick} checked={weatherDetails.allWeatherSelected} />
+        <label htmlFor="allWeatherSelected">All</label>
         <input type="checkbox" name="temperatureSelected" id="temperatureSelected" checked={weatherDetails.temperatureSelected} onChange={handleInputChange} />
         <label htmlFor="temperature">Temperature</label>
         <input type="checkbox" name="windSelected" id="wind" checked={weatherDetails.windSelected} onChange={handleInputChange} />
