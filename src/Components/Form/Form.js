@@ -32,6 +32,7 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
       setWeatherDetails(defaultWeatherDetails)
     } else {
       setWeatherDetails({
+        allWeatherSelected: true,
         temperatureSelected: true,
         cloudSelected: true,
         windSelected: true,
@@ -52,7 +53,6 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
     setNeighborCity('');
     setWeatherDetails(defaultWeatherDetails);
     handleFormReset();
-    // handleFormSubmission({ userCity, neighborCity, weatherDetails })
   }
 
   return (
@@ -65,7 +65,7 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
         <input type="password" name="userPassword" id="userPassword" />
       </fieldset> */}
       <fieldset>
-        <legend>Select your locations</legend>
+        <legend>Select locations</legend>
         <label htmlFor="userCity">Your location: </label>
         <input type="text" name="userCity" id="userCity" onChange={(e) => { setUserCity(e.target.value) }} value={userCity} required list='commonLocations' />
         <label htmlFor="neighborCity">Your neighbor's location: </label>

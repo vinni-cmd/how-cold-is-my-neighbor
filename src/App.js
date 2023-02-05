@@ -21,14 +21,7 @@ function App() {
   const handleFormReset = () => {
     setNeighborWeather({});
     setUserWeather({});
-    setWeatherSelection({
-      allWeatherSelected: false,
-      temperatureSelected: false,
-      cloudSelected: false,
-      windSelected: false,
-      humiditySelected: false,
-      twilightSelected: false,
-    });
+    setWeatherSelection({});
   }
 
   return (
