@@ -5,6 +5,7 @@ import { BsCloudSunFill, BsCloudSun } from 'react-icons/bs'
 import { TbTemperatureCelsius, TbTemperature } from 'react-icons/tb'
 import { CiTempHigh } from 'react-icons/ci'
 import { GiClothes } from 'react-icons/gi'
+import { SiSnowflake } from 'react-icons/si'
 
 const CityResult = ({ cityWeather, weatherSelection }) => {
 
@@ -38,7 +39,7 @@ const CityResult = ({ cityWeather, weatherSelection }) => {
         {
           !temperatureSelected ? null : (
             <>
-              <li> <TbTemperature /> <CiTempHigh /> <FaTemperatureHigh />Temperature {temp}°<span class="sub">C</span><TbTemperatureCelsius />
+              <li> <SiSnowflake />Temperature {temp}°<span class="sub">C</span><TbTemperatureCelsius />
               </li>
               <li><GiClothes /> Feels like {feelTemp}°<span class="sub">C</span></li>
             </>
