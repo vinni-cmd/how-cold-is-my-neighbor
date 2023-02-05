@@ -14,3 +14,53 @@ html { box-sizing: border-box;}
   flex-direction: column;
   justify-content: space-between;
 }
+
+/* loader style and animation */
+
+.loading-container {
+  display: none;
+}
+
+.loading-container.visible{
+    display: block;
+}
+.loading{
+  font-size: 3rem;
+  color: blue;
+  margin: 0 auto;
+  animation: loading 3s infinite;
+}
+
+/* .hidden {
+  animation: hide 2s ease forwards;
+} */
+
+@keyframes loading {
+  0% {
+    scale: 0.1;
+  }
+  25 % {
+    rotate: 90deg;
+  }
+  50% {
+    scale: 1.5;
+    rotate: 180deg;
+  }
+  75% {
+    rotate: 270deg;
+  }
+  100% {
+    scale: 0.1;
+    rotate: 360deg;
+  }
+}
+
+/* @keyframes hide {
+  0% {
+    clip-path: circle(75%);
+  }
+  100% {
+    clip-path: circle(0%);
+    display: none;
+  }
+} */

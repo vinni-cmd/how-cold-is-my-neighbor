@@ -2,7 +2,7 @@ import CityResult from './CityResult';
 import Comparison from './Comparison';
 import './Results.css'
 
-const Results = ({ userWeather, neighborWeather, weatherSelection }) => {
+const Results = ({ userWeather, neighborWeather, weatherSelection, setApiCallInProgress }) => {
 
   // function buildTruthyArray(object) {
   //   const array = [];
@@ -16,8 +16,7 @@ const Results = ({ userWeather, neighborWeather, weatherSelection }) => {
 
   // const selectedWeather = buildTruthyArray(weatherSelection);
   // console.log(selectedWeather)
-
-
+  setApiCallInProgress(false);
   return (
     <section className="results">
       <h2>Results</h2>
