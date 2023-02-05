@@ -16,7 +16,7 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
     twilightSelected: false,
   }
 
-  const [weatherDetails, setWeatherDetails] = useState({ defaultWeatherDetails });
+  const [weatherDetails, setWeatherDetails] = useState(defaultWeatherDetails);
 
 
   const handleInputChange = (e) => {
