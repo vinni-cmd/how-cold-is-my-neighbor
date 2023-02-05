@@ -17,14 +17,6 @@ const Results = ({ userWeather, neighborWeather, weatherSelection }) => {
   // const selectedWeather = buildTruthyArray(weatherSelection);
   // console.log(selectedWeather)
 
-  // maybe ths should be in a useffect but it only runs on after results are returned?
-  function calculateComparison(userWeather, neighborWeather, weatherSelection) {
-    const comparison = {};
-    // check which values need to be compared based on user weather details selection
-
-    // for those details create a key and calculate the associated value by subtracting/comparing relevent property values from the two cities
-    return comparison
-  }
 
   return (
     <section className="results">
