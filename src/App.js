@@ -1,12 +1,13 @@
 import './App.css';
 import { useState } from 'react';
 import { populateWeatherData } from './modules/apis';
+// components
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Form from './Components/Form/Form';
 import Results from './Components/Results/Results';
 import Error from './Components/Error/Error';
-import Loading from './Components/Loading/Loading';
+import Loader from './Components/Loading/Loader';
 
 function App() {
   const [userWeather, setUserWeather] = useState({});
@@ -41,9 +42,7 @@ function App() {
       <Header />
       <main className='wrapper'>
         <Form handleFormSubmission={handleFormSubmission} handleFormReset={handleFormReset} />
-        {
-          apiCallInProgress ? <Loading /> : null
-        }
+        <Loader apiCallInProgress={apiCallInProgress} />
         {
           errorMessage ? <Error errorMessage={errorMessage} setApiCallInProgress={setApiCallInProgress} /> : null
         }
