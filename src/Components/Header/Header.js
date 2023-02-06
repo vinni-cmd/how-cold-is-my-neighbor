@@ -4,8 +4,10 @@ const Header = () => {
   return (
     <header>
       <div class="wrapper">
-        <SiSnowflake />
-        <h1>How Cold Is My Neighbor</h1>
+        <div className="heading">
+          <SiSnowflake className='logo' />
+          <h1>How Cold Is My Neighbor</h1>
+        </div>
         <p>Real time weather conditions</p>
       </div>
     </header>
