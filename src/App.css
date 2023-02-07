@@ -106,6 +106,7 @@ legend {
 .location-detail-inputs {
   display: flex;
   flex-direction: column;
+  gap: 1em;
 }
 
 .weather-detail-inputs {
@@ -140,7 +141,7 @@ button {
   font: inherit;
   font-weight: var(--bold-fw);
   padding: 0.3em 1em;
-  box-shadow: 2px 2px 4px black;
+  box-shadow: 2px 2px 4px var(--accent-c);
   transition: all 0.3s 0.1s ease-in;
 }
 
@@ -155,7 +156,7 @@ button:focus {
 
 .results {
   color: var(--primary-c);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
   border: thick double var(--accent-c);
   border-radius: 6px;
   padding: 1em 1em;
