@@ -65,10 +65,12 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
       </fieldset> */}
       <fieldset>
         <legend>Select locations</legend>
-        <label htmlFor="userCity">Your location: </label>
-        <input type="text" name="userCity" id="userCity" onChange={(e) => { setUserCity(e.target.value) }} value={userCity} required list='commonLocations' />
-        <label htmlFor="neighborCity">Neighbor location: </label>
-        <input type="text" name="neighborCity" id="neighborCity" value={neighborCity} onChange={(e) => { setNeighborCity(e.target.value) }} required list='commonLocations' />
+        <div class="location-detail-inputs">
+          <label htmlFor="userCity">Your location: </label>
+          <input type="text" name="userCity" id="userCity" onChange={(e) => { setUserCity(e.target.value) }} value={userCity} required list='commonLocations' />
+          <label htmlFor="neighborCity">Neighbor location: </label>
+          <input type="text" name="neighborCity" id="neighborCity" value={neighborCity} onChange={(e) => { setNeighborCity(e.target.value) }} required list='commonLocations' />
+        </div>
         <CityDatalist />
       </fieldset>
       <fieldset>

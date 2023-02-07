@@ -28,7 +28,7 @@ html {
 }
 
 body {
-    font-size: 1.6rem;
+    font-size: clamp(1.65rem, 2vw + 1rem, 2rem);
     font-family: var(--body-ff);
     color: var(--primary-c);
     background-image: url(./assets/jeremy-perkins-uhjiu8FjnsQ-unsplash.jpg);
@@ -44,7 +44,8 @@ body {
 }
 
 h1,
-h2 {
+h2,
+footer {
   font-family: var(--heading-ff);
 }
 
@@ -61,23 +62,24 @@ label {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 2em;
 }
 
 /* Header styling */
 
 h1,
 .heading .logo {
+  margin-top: 1em;
   font-size: clamp(5rem, 10vw + 1rem, 10.8rem);
 }
 
 /* Main styling */
 
+
 /* Form styling */
 
 form {
-  /* border: 3px solid var(--accent-c); */
-  padding: 1em;
+  padding: 1em 1em;
+  border: thick double var(--accent-c);
   border-radius: 6px;
   margin: 3em auto;
   color: var(--secondary-c);
@@ -85,38 +87,43 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1em;
+  gap: 1.5em;
 }
 
 fieldset {
   padding: 1em;
   border: 3px solid var(--accent-c);
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   gap: 0.5em;
 }
 
+legend {
+  font-weight: var(--bold-fw);
+}
+
+.location-detail-inputs {
+  display: flex;
+  flex-direction: column;
+}
+
 .weather-detail-inputs {
   display: grid;
   grid-template-columns: repeat(1, 20px 1fr );
-  /* grid-template-rows: repeat(2, 1fr); */
+  /* grid-template-rows: repeat(3, 1fr); */
   gap: 1em;
   text-align: left;
-}
-
-.weather-detail-inputs > input {
-  border: 1px solid olive;
-  /* text-align: right; */
-}
-
-.weather-detail-inputs > input:nth-child(n+1) {
+  align-items: center;
 }
 
 input {
   font: inherit;
   accent-color: var(--accent-c);
   border-radius: 6px;
-  padding: 0.2em;
+  max-width: 30ch;
+  margin: 0 auto;
+  padding: 0.2em 0.5em;
 }
 
 
@@ -126,22 +133,59 @@ input[type=checkbox] {
 }
 
 button {
-  color: inherit;
-  background-color: inherit;
-  border: 3px solid var(--accent-c);
+  color: var(--accent-c);
+  background-color: var(--primary-c);
+  border: 1px solid var(--accent-c);
   border-radius: 6px;
   font: inherit;
   font-weight: var(--bold-fw);
   padding: 0.3em 1em;
+  box-shadow: 2px 2px 4px black;
   transition: all 0.3s 0.1s ease-in;
 }
 
 button:hover,
 button:focus {
+  color: var(--primary-c);
   background-color: var(--accent-c);
+  scale: 0.96;
 }
 
 /* Results styling */
+
+.results {
+  color: var(--primary-c);
+  background-color: rgba(255, 255, 255, 0.3);
+  border: thick double var(--accent-c);
+  border-radius: 6px;
+  padding: 1em 1em;
+}
+
+.results-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.results-breakdown li {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.result-value {
+  text-align: right;
+  flex-grow: 1;
+}
+
+.weather-icon {
+  color: var(--accent-c);
+  border: 2px solid var(--accent-c);
+  border-radius: 6px;
+  font-size: 4rem;
+  padding: 0.3rem;
+}
 
 /* Error Styling */
 
@@ -149,8 +193,10 @@ button:focus {
   color: red;
   background-color: var(--primary-c);
   padding: 1em;
-  border: 3px solid red;
+  border: thick double red;
   border-radius: 6px;
+  max-width: 550px;
+  margin-inline: auto;
 }
 
 .error-icon {
@@ -160,9 +206,10 @@ button:focus {
 /* Footer Styling */
 
 footer {
+  font-size: clamp(1.4rem, 1vw + 1rem, 2rem);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: baseline;
   gap: 0.2em;
   margin-top: 3em;
 }
@@ -210,10 +257,31 @@ a:focus {
   .weather-detail-inputs {
   grid-template-columns: repeat(2, 20px 1fr);
   }
+  button {
+    align-self: center;
+    width: 30ch;
+  }
+}
+
+@media (min-width: 721px) {
+  .results-breakdown {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .results-breakdown div {
+    flex-basis: calc(50% - 1em);
+    flex-grow: 1;
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 769px) {
   .weather-detail-inputs {
   grid-template-columns: repeat(3, 20px 1fr);
   }
+  /* .location-detail-inputs {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  } */
 }

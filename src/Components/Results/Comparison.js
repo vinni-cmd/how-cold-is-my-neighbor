@@ -43,15 +43,15 @@ const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
 
   return (
     <div>
-      <h3>Comparison2</h3>
+      <h3>Comparison</h3>
       <ul>
         {
           !temperatureSelected ? null : (
             <>
-              <li>Your neighbor is {Math.abs(comparison.temp)}°<span class="sub">C</span> {
+              <li>Your neighbor is {Math.round(Math.abs(comparison.temp) * 100) / 100}°C {
                 (comparison.temp) > 0 ? 'warmer' : 'colder'
               }</li>
-              <li>Your neighbor feels {Math.abs(comparison.feelTemp)}°<span class="sub">C</span> {
+              <li>Your neighbor feels {Math.round(Math.abs(comparison.feelTemp) * 100) / 100}°C {
                 (comparison.feelTemp) > 0 ? 'warmer' : 'colder'
               }</li>
             </>
@@ -59,7 +59,7 @@ const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
         }
         {
           !windSelected ? null : (
-            <li> Your neighbor's city is {comparison.windSpeed > 0 ? 'more' : comparison.windSpeed < 0 ? 'less' : 'just as'} windy</li>
+            <li>Your neighbor's city is {comparison.windSpeed > 0 ? 'more' : comparison.windSpeed < 0 ? 'less' : 'just as'} windy</li>
           )
         }
         {
