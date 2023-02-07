@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { populateWeatherData } from './modules/apis';
 // components
 import Header from './Components/Header/Header';
@@ -8,6 +8,7 @@ import Form from './Components/Form/Form';
 import Results from './Components/Results/Results';
 import Error from './Components/Error/Error';
 import Loader from './Components/Loading/Loader';
+import PageLoading from './Components/Loading/PageLoading';
 
 function App() {
   const [userWeather, setUserWeather] = useState({});
@@ -15,6 +16,7 @@ function App() {
   const [weatherSelection, setWeatherSelection] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
   const [apiCallInProgress, setApiCallInProgress] = useState(false);
+  const [isPageLoading, setIsPageLoading] = useState(false)
 
   const handleFormSubmission = ({ userCity, neighborCity, weatherDetails }) => {
     handleFormReset();
@@ -37,8 +39,18 @@ function App() {
     setWeatherSelection({});
   }
 
+  const handlePageLoad = () => {
+    setIsPageLoading(false)
+  }
+
+  useEffect(() => {
+    setIsPageLoading(true)
+  }, [])
+
+
   return (
-    <div className="App">
+    <div className="App" onLoad={handlePageLoad}>
+      <PageLoading isPageLoading={isPageLoading} />
       <Header />
       <main className='wrapper'>
         <Form handleFormSubmission={handleFormSubmission} handleFormReset={handleFormReset} />
