@@ -1,9 +1,6 @@
-import { FaWind, FaCloudSun, FaTemperatureHigh, FaGrinBeamSweat, FaRegGrinBeamSweat } from 'react-icons/fa';
+import { FaWind, FaCloudSun } from 'react-icons/fa';
 import { FiSunrise, FiSunset } from 'react-icons/fi'
 import { WiHumidity } from 'react-icons/wi'
-import { BsCloudSunFill, BsCloudSun } from 'react-icons/bs'
-import { TbTemperatureCelsius, TbTemperature } from 'react-icons/tb'
-import { CiTempHigh } from 'react-icons/ci'
 import { GiClothes } from 'react-icons/gi'
 import { SiSnowflake } from 'react-icons/si'
 

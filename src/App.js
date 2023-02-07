@@ -18,7 +18,7 @@ function App() {
 
   const handleFormSubmission = ({ userCity, neighborCity, weatherDetails }) => {
     handleFormReset();
-    if (Object.values(weatherDetails).every(detail => detail == false)) {
+    if (Object.values(weatherDetails).every(detail => detail === false)) {
       setErrorMessage('Please select at least one weather detail to compare!')
     } else {
       setApiCallInProgress(true)
