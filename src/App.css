@@ -52,6 +52,7 @@ button,
 a,
 input,
 label {
+  outline-color: var(--accent-c);
   cursor: pointer;
 }
 
@@ -252,7 +253,7 @@ a:focus {
 
 .loader:hover,
 .loading {
-  animation: loading 3s infinite linear;
+  animation: loading 2s infinite linear;
 }
 
 @keyframes loading {
