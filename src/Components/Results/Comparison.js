@@ -42,7 +42,7 @@ const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
   console.log('tempdiff', tempDiff);
 
   return (
-    <div>
+    <div className="comparison">
       <h3>Comparison</h3>
       <ul>
         {

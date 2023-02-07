@@ -106,7 +106,7 @@ legend {
 .location-detail-inputs {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.5em;
 }
 
 .weather-detail-inputs {
@@ -119,6 +119,7 @@ legend {
 }
 
 input {
+  text-align: center;
   font: inherit;
   accent-color: var(--accent-c);
   border-radius: 6px;
@@ -156,7 +157,7 @@ button:focus {
 
 .results {
   color: var(--primary-c);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(15, 120, 150, 0.3);
   border: thick double var(--accent-c);
   border-radius: 6px;
   padding: 1em 1em;
@@ -168,6 +169,16 @@ button:focus {
   gap: 2em;
 }
 
+h3 {
+  text-decoration: underline 2px solid var(--accent-c);
+  text-underline-offset: 1rem;
+}
+
+.comparison li{
+  display: flex;
+  justify-content: center;
+}
+
 .results-breakdown li {
   display: flex;
   align-items: center;
@@ -176,6 +187,7 @@ button:focus {
 }
 
 .result-value {
+  font-weight: var(--bold-fw);
   text-align: right;
   flex-grow: 1;
 }
@@ -280,9 +292,19 @@ a:focus {
   .weather-detail-inputs {
   grid-template-columns: repeat(3, 20px 1fr);
   }
-  /* .location-detail-inputs {
+  .location-detail-inputs {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  } */
+  }
+  .location-detail-inputs > * {
+    flex-basis: 50%;
+    flex-grow: 1;
+  }
+}
+
+@media (min-width: 1100px) {
+  .location-detail-inputs{
+    flex-wrap: nowrap;
+  }
 }
