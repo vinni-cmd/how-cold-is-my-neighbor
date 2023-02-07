@@ -48,25 +48,27 @@ h2 {
   font-family: var(--heading-ff);
 }
 
+button,
+a,
+input,
+label {
+  cursor: pointer;
+}
+
 .App {
   min-height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-top: 2em;
 }
 
 /* Header styling */
 
-.heading  {
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-}
-
+h1,
 .heading .logo {
-  font-size: 2.5rem;
-  margin-right: -2rem;
+  font-size: clamp(5rem, 10vw + 1rem, 10.8rem);
 }
 
 /* Main styling */
@@ -95,14 +97,19 @@ fieldset {
 }
 
 .weather-detail-inputs {
-  display: flex;
-  justify-content: start;
+  display: grid;
+  grid-template-columns: repeat(1, 20px 1fr );
+  /* grid-template-rows: repeat(2, 1fr); */
   gap: 1em;
-  flex-wrap: wrap;
+  text-align: left;
 }
 
 .weather-detail-inputs > input {
-  flex-basis: 50%;
+  border: 1px solid olive;
+  /* text-align: right; */
+}
+
+.weather-detail-inputs > input:nth-child(n+1) {
 }
 
 input {
@@ -194,5 +201,19 @@ a:focus {
   }
   to {
     rotate: 360deg;
+  }
+}
+
+/* media queries */
+
+@media (min-width: 481px) {
+  .weather-detail-inputs {
+  grid-template-columns: repeat(2, 20px 1fr);
+  }
+}
+
+@media (min-width: 769px) {
+  .weather-detail-inputs {
+  grid-template-columns: repeat(3, 20px 1fr);
   }
 }
