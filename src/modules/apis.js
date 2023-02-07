@@ -13,7 +13,8 @@ const populateWeatherData = async (location, setStateFunction, setErrorFunction)
     const curatedWeatherDetails = buildAppWeatherObject(response);
     setStateFunction(curatedWeatherDetails);
   } catch (error) {
-    setErrorFunction('Please ensure your locations are limited to settlements on planet Earth')
+    setErrorFunction(`'${location}' not found. Please ensure your locations are limited to settlements on planet Earth`)
+    // use template literal to refer to invalid location
   }
 }
 

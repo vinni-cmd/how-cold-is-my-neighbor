@@ -15,10 +15,22 @@ function getLocalTime(unix, timeZoneShift) {
 }
 
 function calcTimeDiffInMin(unix1, unix2, timeZoneShift) {
+  console.log('unix-1', unix1);
+  console.log('unix-2', unix2);
+  console.log('timezone', timeZoneShift)
   const localDate1 = convertUnixToLocalDate(unix1, timeZoneShift);
   const localDate2 = convertUnixToLocalDate(unix2, timeZoneShift);
-  const localMinTime1 = localDate1.getHours() * 60 + localDate1.getMinutes();
-  const localMinTime2 = localDate2.getHours() * 60 + localDate2.getMinutes();
+  console.log('localday1', localDate1.toUTCString())
+  console.log('localday2', localDate2.toUTCString())
+  console.log('local date 1', (localDate1.getDate()))
+  console.log('local date 2', (localDate2.getDate()))
+  console.log('local hours 1', (localDate1.getHours()))
+  console.log('local hours 2', (localDate2.getHours()))
+  const localMinTime1 = (localDate1.getUTCHours() * 60) + localDate1.getUTCMinutes();
+  console.log('localMinTime1', localMinTime1)
+  const localMinTime2 = (localDate2.getUTCHours() * 60) + localDate2.getUTCMinutes();
+  console.log('localMinTime2', localMinTime2)
+
   return (localMinTime2 - localMinTime1)
 }
 
