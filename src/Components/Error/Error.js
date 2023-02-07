@@ -4,7 +4,7 @@ const Error = ({ errorMessage, setApiCallInProgress }) => {
   setApiCallInProgress(false);
   return (
     <div className="error">
-      <RiThunderstormsFill />
+      <RiThunderstormsFill className='error-icon' />
       <p>{errorMessage}</p>
     </div>
   )

@@ -69,46 +69,51 @@ h2 {
   margin-right: -2rem;
 }
 
-/* loader style and animation */
-
-.loader {
-  font-size: 5rem;
-  margin: 0 auto;
-}
-
-.loading{
-  animation: loading 3s infinite linear;
-}
-
-@keyframes loading {
-  from {
-    rotate: 0deg;
-  }
-  to {
-    rotate: 360deg;
-  }
-}
-
+/* Main styling */
 
 /* Form styling */
 
 form {
-  border: 3px solid var(--accent-c);
+  /* border: 3px solid var(--accent-c); */
+  padding: 1em;
   border-radius: 6px;
-  width: min(100% - 2rem, 600px);
-  margin-inline: auto;
+  margin: 3em auto;
   color: var(--secondary-c);
   background-color: var(--primary-c);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
+}
+
+fieldset {
+  padding: 1em;
+  border: 3px solid var(--accent-c);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.weather-detail-inputs {
+  display: flex;
+  justify-content: start;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.weather-detail-inputs > input {
+  flex-basis: 50%;
 }
 
 input {
+  font: inherit;
   accent-color: var(--accent-c);
   border-radius: 6px;
   padding: 0.2em;
 }
 
+
 input[type=checkbox] {
-  display: block;
   height: 2rem;
   width: 2rem;
 }
@@ -116,6 +121,7 @@ input[type=checkbox] {
 button {
   color: inherit;
   background-color: inherit;
+  border: 3px solid var(--accent-c);
   border-radius: 6px;
   font: inherit;
   font-weight: var(--bold-fw);
@@ -132,6 +138,18 @@ button:focus {
 
 /* Error Styling */
 
+.error {
+  color: red;
+  background-color: var(--primary-c);
+  padding: 1em;
+  border: 3px solid red;
+  border-radius: 6px;
+}
+
+.error-icon {
+  font-size: 3rem;
+}
+
 /* Footer Styling */
 
 footer {
@@ -139,6 +157,7 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 0.2em;
+  margin-top: 3em;
 }
 
 a {
@@ -153,4 +172,27 @@ a {
 a:hover,
 a:focus {
   color: var(--accent-c);
+}
+
+
+/* loader style and animation */
+
+.loader {
+  font-size: 5rem;
+  margin-inline: auto;
+  margin-bottom: 1em;
+}
+
+.loader:hover,
+.loading {
+  animation: loading 3s infinite linear;
+}
+
+@keyframes loading {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
 }
