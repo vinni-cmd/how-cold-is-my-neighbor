@@ -1,10 +1,15 @@
-import './Header.css'
+import { SiSnowflake } from 'react-icons/si'
 
 const Header = () => {
   return (
     <header>
-      <h1>How Cold Is My Neighbor</h1>
-      <p>Real time weather conditions</p>
+      <div class="wrapper">
+        <div className="heading">
+          <SiSnowflake className='logo' />
+          <h1>How Cold Is My Neighbor</h1>
+        </div>
+        <p>Real time weather conditions</p>
+      </div>
     </header>
   )
 }

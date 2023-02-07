@@ -5,6 +5,7 @@ import { BsCloudSunFill, BsCloudSun } from 'react-icons/bs'
 import { TbTemperatureCelsius, TbTemperature } from 'react-icons/tb'
 import { CiTempHigh } from 'react-icons/ci'
 import { GiClothes } from 'react-icons/gi'
+import { SiSnowflake } from 'react-icons/si'
 
 const CityResult = ({ cityWeather, weatherSelection }) => {
 
@@ -34,43 +35,43 @@ const CityResult = ({ cityWeather, weatherSelection }) => {
     // add conditional css class here mentioned in first lessons on react
     <div>
       <h3>{city}, {country}</h3>
+      {
+        conditions.map(condition => <p>{condition}</p>)
+      }
       <ul>
         {
           !temperatureSelected ? null : (
             <>
-              <li> <TbTemperature /> <CiTempHigh /> <FaTemperatureHigh />Temperature {temp}°<span class="sub">C</span><TbTemperatureCelsius />
+              <li> <SiSnowflake className='weather-icon' />Temperature <span class="result-value">{temp}°C</span>
               </li>
-              <li><GiClothes /> Feels like {feelTemp}°<span class="sub">C</span></li>
+              <li><GiClothes className='weather-icon' />Feels like <span class="result-value">{feelTemp}°C</span></li>
             </>
           )
         }
         {
           !windSelected ? null : (
-            <li> <FaWind /> Wind {windDirection} {windSpeed} m/s</li>
+            <li><FaWind className='weather-icon' />Wind <span class="result-value">{windDirection} {windSpeed} m/s</span></li>
           )
         }
         {
           !humiditySelected ? null : (
-            <li><WiHumidity /> <FaGrinBeamSweat /> <FaRegGrinBeamSweat /> Humidity {humidityPerc}%</li>
+            <li><WiHumidity className='weather-icon' />Humidity <span class="result-value">{humidityPerc}%</span></li>
           )
         }
         {
           !cloudSelected ? null : (
-            <li><BsCloudSunFill /> <FaCloudSun /> <BsCloudSun /> Cloud Cover {cloudCover}%</li>
+            <li><FaCloudSun className='weather-icon' />Cloud Cover <span class="result-value">{cloudCover}%</span></li>
           )
         }
         {
           !twilightSelected ? null : (
             <>
-              <li><FiSunrise /> Sunrise {sunrise}</li>
-              <li><FiSunset /> Sunset {sunset}</li>
+              <li><FiSunrise className='weather-icon' />Sunrise <span class="result-value">{sunrise}</span></li>
+              <li><FiSunset className='weather-icon' />Sunset <span className='result-value'>{sunset}</span></li>
             </>
           )
         }
       </ul>
-      {
-        conditions.map(condition => <p>{condition}</p>)
-      }
     </div>
   )
 }

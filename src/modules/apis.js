@@ -1,6 +1,6 @@
 import { calcWindDirection, getLocalTime, calcTimeDiffInMin } from "./utilities";
 
-const populateWeatherData = async (location, setStateFunction) => {
+const populateWeatherData = async (location, setStateFunction, setErrorFunction) => {
   const url = new URL('https://api.openweathermap.org/data/2.5/weather');
   url.search = new URLSearchParams({
     appid: '2f2490bb3753f1067ab2e758ffc26e39',
@@ -13,7 +13,8 @@ const populateWeatherData = async (location, setStateFunction) => {
     const curatedWeatherDetails = buildAppWeatherObject(response);
     setStateFunction(curatedWeatherDetails);
   } catch (error) {
-
+    setErrorFunction(`'${location}' not found. Please ensure your locations are limited to settlements on planet Earth`)
+    // use template literal to refer to invalid location
   }
 }
 

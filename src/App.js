@@ -1,24 +1,37 @@
 import './App.css';
 import { useState } from 'react';
 import { populateWeatherData } from './modules/apis';
+// components
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import Form from './Components/Form/Form';
 import Results from './Components/Results/Results';
+import Error from './Components/Error/Error';
+import Loader from './Components/Loading/Loader';
 
 function App() {
   const [userWeather, setUserWeather] = useState({});
   const [neighborWeather, setNeighborWeather] = useState({});
   const [weatherSelection, setWeatherSelection] = useState({});
+  const [errorMessage, setErrorMessage] = useState('');
+  const [apiCallInProgress, setApiCallInProgress] = useState(false);
 
   const handleFormSubmission = ({ userCity, neighborCity, weatherDetails }) => {
-    populateWeatherData(userCity, setUserWeather);
-    populateWeatherData(neighborCity, setNeighborWeather);
-    setWeatherSelection(weatherDetails);
+    handleFormReset();
+    if (Object.values(weatherDetails).every(detail => detail == false)) {
+      setErrorMessage('Please select at least one weather detail to compare!')
+    } else {
+      setApiCallInProgress(true)
+      setErrorMessage('');
+      setWeatherSelection(weatherDetails);
+      populateWeatherData(userCity, setUserWeather, setErrorMessage);
+      populateWeatherData(neighborCity, setNeighborWeather, setErrorMessage);
+    }
   }
 
   // handles reset event (from form) in results component but not currently working
   const handleFormReset = () => {
+    setErrorMessage('');
     setNeighborWeather({});
     setUserWeather({});
     setWeatherSelection({});
@@ -27,10 +40,16 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Form handleFormSubmission={handleFormSubmission} handleFormReset={handleFormReset} />
-      {
-        (Object.keys(userWeather).length && Object.keys(neighborWeather).length) ? <Results userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} /> : null
-      }
+      <main className='wrapper'>
+        <Form handleFormSubmission={handleFormSubmission} handleFormReset={handleFormReset} />
+        <Loader apiCallInProgress={apiCallInProgress} />
+        {
+          errorMessage ? <Error errorMessage={errorMessage} setApiCallInProgress={setApiCallInProgress} /> : null
+        }
+        {
+          (Object.keys(userWeather).length && Object.keys(neighborWeather).length) ? <Results userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} setApiCallInProgress={setApiCallInProgress} /> : null
+        }
+      </main>
       <Footer />
     </div>
   );
@@ -46,7 +65,7 @@ export default App;
 // - userQuery: userCity
 // - userQuery: neighborCity
 // - userQuery: weatherDetails {object consisting of user weather detail preferences}
-// is it better to split out the above into separate states or is a single state sufficient? Think I can just access the properties inside of the object when I need them.    
+// is it better to split out the above into separate states or is a single state sufficient? Think I can just access the properties inside of the object when I need them.
 
 // A local method (handleUserCityChange) to handle the onChange event to update state (userCity) with user input
 
