@@ -67,7 +67,7 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
         <legend>Select locations</legend>
         <label htmlFor="userCity">Your location: </label>
         <input type="text" name="userCity" id="userCity" onChange={(e) => { setUserCity(e.target.value) }} value={userCity} required list='commonLocations' />
-        <label htmlFor="neighborCity">Your neighbor's location: </label>
+        <label htmlFor="neighborCity">Neighbor location: </label>
         <input type="text" name="neighborCity" id="neighborCity" value={neighborCity} onChange={(e) => { setNeighborCity(e.target.value) }} required list='commonLocations' />
         <CityDatalist />
       </fieldset>
@@ -78,7 +78,7 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
         <label htmlFor="allWeather">All</label> */}
         <input type="checkbox" id="allWeatherSelected" name='allWeatherSelected' onClick={handleAllClick} checked={weatherDetails.allWeatherSelected} />
         <label htmlFor="allWeatherSelected">All</label>
-        <input type="checkbox" name="temperatureSelected" id="temperatureSelected" checked={weatherDetails.temperatureSelected} onChange={handleInputChange} />
+        <input type="checkbox" name="temperatureSelected" id="temperature" checked={weatherDetails.temperatureSelected} onChange={handleInputChange} />
         <label htmlFor="temperature">Temperature</label>
         <input type="checkbox" name="windSelected" id="wind" checked={weatherDetails.windSelected} onChange={handleInputChange} />
         <label htmlFor="wind">Wind</label>
