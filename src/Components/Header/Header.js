@@ -6,7 +6,7 @@ const Header = () => {
       <div className="wrapper">
         <div className="heading">
           <SiSnowflake className='logo' />
-          <h1>How Cold Is My Neighbor</h1>
+          <h1>How Cold Is Your Uncle</h1>
         </div>
         <p>Real time weather conditions</p>
       </div>

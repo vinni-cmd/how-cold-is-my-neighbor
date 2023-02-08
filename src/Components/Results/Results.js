@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
 import CityResult from './CityResult';
 import Comparison from './Comparison';
 
 const Results = ({ userWeather, neighborWeather, weatherSelection, setApiCallInProgress }) => {
-  setApiCallInProgress(false);
+  useEffect(() => {
+    setApiCallInProgress(false);
+  }, []);
   return (
     <section className="results">
       <h2>Results</h2>
