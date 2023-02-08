@@ -3,7 +3,7 @@ import CityDatalist from './Datalist';
 
 const Form = ({ handleFormSubmission, handleFormReset }) => {
   const [userCity, setUserCity] = useState('');
-  const [neighborCity, setNeighborCity] = useState('');
+  const [uncleCity, setUncleCity] = useState('');
 
   const defaultWeatherDetails = {
     allWeatherSelected: false,
@@ -41,13 +41,13 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleFormSubmission({ userCity, neighborCity, weatherDetails });
+    handleFormSubmission({ userCity, uncleCity, weatherDetails });
   }
 
   const handleReset = (e) => {
     e.preventDefault();
     setUserCity('');
-    setNeighborCity('');
+    setUncleCity('');
     setWeatherDetails(defaultWeatherDetails);
     handleFormReset();
   }
@@ -59,8 +59,8 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
         <div className="location-detail-inputs">
           <label htmlFor="userCity">Your location: </label>
           <input type="text" name="userCity" id="userCity" onChange={(e) => { setUserCity(e.target.value) }} value={userCity} required list='commonLocations' />
-          <label htmlFor="neighborCity">Uncle location: </label>
-          <input type="text" name="neighborCity" id="neighborCity" value={neighborCity} onChange={(e) => { setNeighborCity(e.target.value) }} required list='commonLocations' />
+          <label htmlFor="uncleCity">Uncle location: </label>
+          <input type="text" name="uncleCity" id="uncleCity" value={uncleCity} onChange={(e) => { setUncleCity(e.target.value) }} required list='commonLocations' />
         </div>
         <CityDatalist />
       </fieldset>

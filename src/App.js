@@ -12,13 +12,13 @@ import PageLoading from './Components/Loading/PageLoading';
 
 function App() {
   const [userWeather, setUserWeather] = useState({});
-  const [neighborWeather, setNeighborWeather] = useState({});
+  const [uncleWeather, setUncleWeather] = useState({});
   const [weatherSelection, setWeatherSelection] = useState({});
   const [errorMessage, setErrorMessage] = useState('');
   const [apiCallInProgress, setApiCallInProgress] = useState(false);
   const [isPageLoading, setIsPageLoading] = useState(false);
 
-  const handleFormSubmission = ({ userCity, neighborCity, weatherDetails }) => {
+  const handleFormSubmission = ({ userCity, uncleCity, weatherDetails }) => {
     handleFormReset();
     if (Object.values(weatherDetails).every(detail => detail === false)) {
       setErrorMessage('Please select at least one weather detail to compare!');
@@ -27,13 +27,13 @@ function App() {
       setErrorMessage('');
       setWeatherSelection(weatherDetails);
       populateWeatherData(userCity, setUserWeather, setErrorMessage);
-      populateWeatherData(neighborCity, setNeighborWeather, setErrorMessage);
+      populateWeatherData(uncleCity, setUncleWeather, setErrorMessage);
     }
   }
 
   const handleFormReset = () => {
     setErrorMessage('');
-    setNeighborWeather({});
+    setUncleWeather({});
     setUserWeather({});
     setWeatherSelection({});
   }
@@ -65,10 +65,10 @@ function App() {
             : null
         }
         {
-          (Object.keys(userWeather).length && Object.keys(neighborWeather).length)
+          (Object.keys(userWeather).length && Object.keys(uncleWeather).length)
             ? <Results
               userWeather={userWeather}
-              neighborWeather={neighborWeather}
+              uncleWeather={uncleWeather}
               weatherSelection={weatherSelection}
               setApiCallInProgress={setApiCallInProgress}
             />

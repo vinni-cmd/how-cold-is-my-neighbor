@@ -1,4 +1,4 @@
-const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
+const Comparison = ({ userWeather, uncleWeather, weatherSelection }) => {
   const {
     temperatureSelected,
     cloudSelected,
@@ -7,7 +7,7 @@ const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
     twilightSelected
   } = weatherSelection
 
-  const comparison = calcDiff(userWeather, neighborWeather);
+  const comparison = calcDiff(userWeather, uncleWeather);
 
   function calcDiff(weatherObj1, weatherObj2) {
     const diffObj = {};
