@@ -46,7 +46,6 @@ function App() {
     setIsPageLoading(true);
   }, [])
 
-
   return (
     <div className="App" onLoad={handlePageLoad}>
       <PageLoading isPageLoading={isPageLoading} />

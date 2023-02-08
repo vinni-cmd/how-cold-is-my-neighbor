@@ -56,7 +56,7 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
     <form onSubmit={handleSubmit}>
       <fieldset>
         <legend>Select locations</legend>
-        <div class="location-detail-inputs">
+        <div className="location-detail-inputs">
           <label htmlFor="userCity">Your location: </label>
           <input type="text" name="userCity" id="userCity" onChange={(e) => { setUserCity(e.target.value) }} value={userCity} required list='commonLocations' />
           <label htmlFor="neighborCity">Neighbor location: </label>
@@ -67,7 +67,7 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
       <fieldset>
         <legend>Weather details</legend>
         <div className="weather-detail-inputs">
-          <input type="checkbox" id="allWeatherSelected" name='allWeatherSelected' onClick={handleAllClick} checked={weatherDetails.allWeatherSelected} />
+          <input type="checkbox" id="allWeatherSelected" name='allWeatherSelected' onChange={handleAllClick} checked={weatherDetails.allWeatherSelected} />
           <label htmlFor="allWeatherSelected">All</label>
           <input type="checkbox" name="temperatureSelected" id="temperature" checked={weatherDetails.temperatureSelected} onChange={handleInputChange} />
           <label htmlFor="temperature">Temperature</label>

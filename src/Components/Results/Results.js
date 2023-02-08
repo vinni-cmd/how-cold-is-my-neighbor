@@ -6,7 +6,7 @@ const Results = ({ userWeather, neighborWeather, weatherSelection, setApiCallInP
   return (
     <section className="results">
       <h2>Results</h2>
-      <div class="results-breakdown">
+      <div className="results-breakdown">
         <CityResult cityWeather={userWeather} weatherSelection={weatherSelection} />
         <CityResult cityWeather={neighborWeather} weatherSelection={weatherSelection} />
         <Comparison userWeather={userWeather} neighborWeather={neighborWeather} weatherSelection={weatherSelection} />
