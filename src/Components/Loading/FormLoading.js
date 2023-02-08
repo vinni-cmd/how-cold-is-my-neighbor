@@ -1,6 +1,6 @@
 import { SiSnowflake } from 'react-icons/si';
 
-const Loader = ({ apiCallInProgress }) => {
+const FormLoading = ({ apiCallInProgress }) => {
   return (
     <div className="loading-container">
       <SiSnowflake className={apiCallInProgress ? 'loader loading' : 'loader'} />
@@ -8,4 +8,4 @@ const Loader = ({ apiCallInProgress }) => {
   )
 }
 
-export default Loader;
+export default FormLoading;

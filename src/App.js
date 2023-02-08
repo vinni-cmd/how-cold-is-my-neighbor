@@ -7,7 +7,7 @@ import Footer from './Components/Footer/Footer';
 import Form from './Components/Form/Form';
 import Results from './Components/Results/Results';
 import Error from './Components/Error/Error';
-import Loader from './Components/Loading/Loader';
+import FormLoading from './Components/Loading/FormLoading';
 import PageLoading from './Components/Loading/PageLoading';
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
           handleFormSubmission={handleFormSubmission}
           handleFormReset={handleFormReset}
         />
-        <Loader apiCallInProgress={apiCallInProgress} />
+        <FormLoading apiCallInProgress={apiCallInProgress} />
         {
           errorMessage
             ? <Error

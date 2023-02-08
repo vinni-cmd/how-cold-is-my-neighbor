@@ -32,6 +32,7 @@ const CityResult = ({ cityWeather, weatherSelection }) => {
     <div>
       <h3>{city}, {country}</h3>
       {
+        // using condition as the key here because it will never be repeated within a given array
         conditions.map(condition => <p key={condition}>{condition}</p>)
       }
       <ul>

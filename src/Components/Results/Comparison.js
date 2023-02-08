@@ -11,9 +11,9 @@ const Comparison = ({ userWeather, uncleWeather, weatherSelection }) => {
 
   function calcDiff(weatherObj1, weatherObj2) {
     const diffObj = {};
-    for (let prop in weatherObj2) {
-      if (typeof (weatherObj2[prop]) === "number") {
-        diffObj[prop] = weatherObj2[prop] - weatherObj1[prop];
+    for (let weatherDetail in weatherObj2) {
+      if (typeof (weatherObj2[weatherDetail]) === "number") {
+        diffObj[weatherDetail] = weatherObj2[weatherDetail] - weatherObj1[weatherDetail];
       }
     }
     return diffObj;
