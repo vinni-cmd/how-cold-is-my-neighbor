@@ -1,4 +1,4 @@
-import { SiSnowflake } from 'react-icons/si'
+import { SiSnowflake } from 'react-icons/si';
 
 const Header = () => {
   return (
@@ -14,4 +14,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header;

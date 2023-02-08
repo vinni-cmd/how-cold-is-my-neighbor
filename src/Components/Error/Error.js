@@ -1,4 +1,4 @@
-import { RiThunderstormsFill } from 'react-icons/ri'
+import { RiThunderstormsFill } from 'react-icons/ri';
 
 const Error = ({ errorMessage, setApiCallInProgress }) => {
   setApiCallInProgress(false);
@@ -10,4 +10,4 @@ const Error = ({ errorMessage, setApiCallInProgress }) => {
   )
 }
 
-export default Error
+export default Error;

@@ -13,8 +13,7 @@ const populateWeatherData = async (location, setStateFunction, setErrorFunction)
     const curatedWeatherDetails = buildAppWeatherObject(response);
     setStateFunction(curatedWeatherDetails);
   } catch (error) {
-    setErrorFunction(`'${location}' not found. Please ensure your locations are limited to settlements on planet Earth`)
-    // use template literal to refer to invalid location
+    setErrorFunction(`'${location}' not found. Please ensure your locations are limited to settlements on planet Earth`);
   }
 }
 
@@ -28,10 +27,11 @@ function buildAppWeatherObject(apiResponse) {
     main: { humidity: humidityPerc },
     wind: { speed: windSpeed },
   } = apiResponse;
+  // some opportunity below for destructuring into shorter variables
   const windDirection = calcWindDirection(apiResponse.wind.deg);
   const sunrise = getLocalTime(apiResponse.sys.sunrise, apiResponse.timezone);
   const sunset = getLocalTime(apiResponse.sys.sunset, apiResponse.timezone);
-  const daylightInMin = calcTimeDiffInMin(apiResponse.sys.sunrise, apiResponse.sys.sunset, apiResponse.timezone)
+  const daylightInMin = calcTimeDiffInMin(apiResponse.sys.sunrise, apiResponse.sys.sunset, apiResponse.timezone);
   const conditions = apiResponse.weather.map(condition => condition.description);
   return {
     city,

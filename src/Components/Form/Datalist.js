@@ -24,4 +24,4 @@ const CityDatalist = () => {
   )
 }
 
-export default CityDatalist
+export default CityDatalist;

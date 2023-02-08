@@ -5,7 +5,6 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
   const [userCity, setUserCity] = useState('');
   const [neighborCity, setNeighborCity] = useState('');
 
-  // form reset button does not by default reset state
   const defaultWeatherDetails = {
     allWeatherSelected: false,
     temperatureSelected: false,
@@ -17,18 +16,17 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
 
   const [weatherDetails, setWeatherDetails] = useState(defaultWeatherDetails);
 
-
   const handleInputChange = (e) => {
-    const { name, checked } = e.target
+    const { name, checked } = e.target;
     setWeatherDetails({
       ...weatherDetails,
       [name]: checked,
-    })
+    });
   }
 
   const handleAllClick = (e) => {
     if (!e.target.checked) {
-      setWeatherDetails(defaultWeatherDetails)
+      setWeatherDetails(defaultWeatherDetails);
     } else {
       setWeatherDetails({
         allWeatherSelected: true,
@@ -37,7 +35,7 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
         windSelected: true,
         humiditySelected: true,
         twilightSelected: true,
-      })
+      });
     }
   }
 
@@ -56,13 +54,6 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {/* <fieldset>
-        <legend>Login credentials</legend>
-        <label htmlFor="userName">User Name: </label>
-        <input type="text" name="userName" id="userName" />
-        <label htmlFor="userPassword">User Name: </label>
-        <input type="password" name="userPassword" id="userPassword" />
-      </fieldset> */}
       <fieldset>
         <legend>Select locations</legend>
         <div class="location-detail-inputs">
@@ -75,9 +66,6 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
       </fieldset>
       <fieldset>
         <legend>Weather details</legend>
-        {/* just make a button styled like input? */}
-        {/* <input type="checkbox" name="allWeather" id="allWeather" />
-        <label htmlFor="allWeather">All</label> */}
         <div className="weather-detail-inputs">
           <input type="checkbox" id="allWeatherSelected" name='allWeatherSelected' onClick={handleAllClick} checked={weatherDetails.allWeatherSelected} />
           <label htmlFor="allWeatherSelected">All</label>
@@ -93,15 +81,10 @@ const Form = ({ handleFormSubmission, handleFormReset }) => {
           <label htmlFor="twilight">Twilight</label>
         </div>
       </fieldset>
-      {/* <fieldset>
-        <legend>Admin</legend>
-        <input type="checkbox" name="preference" id="preference" />
-        <label htmlFor="preference">Remember preferences</label>
-      </fieldset> */}
       <button type="submit">Submit</button>
       <button type="reset" onClick={handleReset}>Reset</button>
     </form>
   )
 }
 
-export default Form
+export default Form;

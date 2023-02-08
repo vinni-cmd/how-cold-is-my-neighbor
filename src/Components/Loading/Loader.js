@@ -1,4 +1,4 @@
-import { SiSnowflake } from 'react-icons/si'
+import { SiSnowflake } from 'react-icons/si';
 
 const Loader = ({ apiCallInProgress }) => {
   return (
@@ -8,4 +8,4 @@ const Loader = ({ apiCallInProgress }) => {
   )
 }
 
-export default Loader
+export default Loader;

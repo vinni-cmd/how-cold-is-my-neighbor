@@ -1,4 +1,4 @@
-import { SiSnowflake } from 'react-icons/si'
+import { SiSnowflake } from 'react-icons/si';
 
 const PageLoading = ({ isPageLoading }) => {
   return (
@@ -8,4 +8,4 @@ const PageLoading = ({ isPageLoading }) => {
   )
 }
 
-export default PageLoading
+export default PageLoading;

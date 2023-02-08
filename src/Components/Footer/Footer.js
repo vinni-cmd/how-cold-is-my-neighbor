@@ -1,4 +1,4 @@
-import { SiSnowflake } from 'react-icons/si'
+import { SiSnowflake } from 'react-icons/si';
 
 const Footer = () => {
   return (
@@ -11,4 +11,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default Footer;

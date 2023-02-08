@@ -1,4 +1,8 @@
+/* imports */
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+/* custom properties */
 
 :root {
   --heading-ff: 'Quicksand', sans-serif;
@@ -11,6 +15,8 @@
   --accent-c: rgb(130, 215, 243);
 }
 
+/* setup */
+
 html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,html [type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}
 
 html { box-sizing: border-box;}
@@ -19,7 +25,7 @@ html { box-sizing: border-box;}
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
-/* img { max-width: 100%; height: auto; display: block;} */
+/* global styling */
 
 ul, li { margin: 0; padding: 0; list-style: none;}
 
@@ -65,7 +71,7 @@ label {
   justify-content: space-between;
 }
 
-/* Header styling */
+/* header styling */
 
 h1,
 .heading .logo {
@@ -73,10 +79,7 @@ h1,
   font-size: clamp(5rem, 10vw + 1rem, 10.8rem);
 }
 
-/* Main styling */
-
-
-/* Form styling */
+/* form styling */
 
 form {
   padding: 1em 1em;
@@ -113,7 +116,6 @@ legend {
 .weather-detail-inputs {
   display: grid;
   grid-template-columns: repeat(1, 20px 1fr );
-  /* grid-template-rows: repeat(3, 1fr); */
   gap: 1em;
   text-align: left;
   align-items: center;
@@ -136,25 +138,26 @@ input[type=checkbox] {
 }
 
 button {
-  color: var(--accent-c);
+  color: var(--secondary-c);
   background-color: var(--primary-c);
-  border: 1px solid var(--accent-c);
+  border: 1px solid var(--primary-c);
   border-radius: 6px;
   font: inherit;
   font-weight: var(--bold-fw);
   padding: 0.3em 1em;
-  box-shadow: 2px 2px 4px var(--accent-c);
+  box-shadow: 0px 0px 10px var(--accent-c);
   transition: all 0.3s 0.1s ease-in;
 }
 
 button:hover,
 button:focus {
   color: var(--primary-c);
+  border: 1px solid var(--accent-c);
   background-color: var(--accent-c);
   scale: 0.96;
 }
 
-/* Results styling */
+/* results styling */
 
 .results {
   color: var(--primary-c);
@@ -201,7 +204,7 @@ h3 {
   padding: 0.3rem;
 }
 
-/* Error Styling */
+/* error Styling */
 
 .error {
   color: red;
@@ -217,7 +220,7 @@ h3 {
   font-size: 3rem;
 }
 
-/* Footer Styling */
+/* footer Styling */
 
 footer {
   font-size: clamp(1.4rem, 1vw + 1rem, 2rem);
@@ -243,7 +246,7 @@ a:focus {
 }
 
 
-/* loader style and animation */
+/* form loader style and animation */
 
 .loader {
   font-size: 5rem;
@@ -256,16 +259,7 @@ a:focus {
   animation: loading 2s infinite linear;
 }
 
-@keyframes loading {
-  from {
-    rotate: 0deg;
-  }
-  to {
-    rotate: 360deg;
-  }
-}
-
-/* Page loading */
+/* page loading or app mount */
 
 .page-loading {
   color: var(--accent-c);
@@ -284,6 +278,17 @@ a:focus {
 .page-loading > * {
   font-size: 8rem;
   animation: loading 3s infinite linear;
+}
+
+/* keyframes */
+
+@keyframes loading {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
 }
 
 @keyframes circle {

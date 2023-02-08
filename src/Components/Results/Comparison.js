@@ -1,5 +1,4 @@
 const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
-
   const {
     temperatureSelected,
     cloudSelected,
@@ -7,24 +6,6 @@ const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
     humiditySelected,
     twilightSelected
   } = weatherSelection
-
-  // const {
-  //   temp: userTemp,
-  //   feelTemp: userFeelTemp,
-  //   windSpeed: userWindSpeed,
-  //   cloudCover: userCloudCover,
-  //   humidityPerc: userHumidityPerc,
-  //   daylightInMin: userDaylightInMin
-  // } = userWeather
-
-  // const {
-  //   temp: neighborTemp,
-  //   feelTemp: neighborFeelTemp,
-  //   windSpeed: neighborWindSpeed,
-  //   cloudCover: neighborCloudCover,
-  //   humidityPerc: neighborHumidityPerc,
-  //   daylightInMin: neighborDaylightInMin
-  // } = neighborWeather
 
   const comparison = calcDiff(userWeather, neighborWeather);
 
@@ -35,11 +16,8 @@ const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
         diffObj[prop] = weatherObj2[prop] - weatherObj1[prop];
       }
     }
-    return diffObj
+    return diffObj;
   }
-
-  const tempDiff = neighborWeather.temp - userWeather.temp;
-  console.log('tempdiff', tempDiff);
 
   return (
     <div className="comparison">
@@ -65,7 +43,6 @@ const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
         {
           !humiditySelected ? null : (
             <li>Your neighbor is {Math.abs(comparison.humidityPerc)}% {comparison.humidityPerc > 0 ? 'more likely' : 'less likely'} to work up a sweat*</li>
-            // {in the footer put this is not sthe scinentific communities understanding - as a disclaimer}
           )
         }
         {

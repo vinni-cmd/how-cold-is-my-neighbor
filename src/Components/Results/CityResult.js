@@ -1,8 +1,8 @@
 import { FaWind, FaCloudSun } from 'react-icons/fa';
-import { FiSunrise, FiSunset } from 'react-icons/fi'
-import { WiHumidity } from 'react-icons/wi'
-import { GiClothes } from 'react-icons/gi'
-import { SiSnowflake } from 'react-icons/si'
+import { FiSunrise, FiSunset } from 'react-icons/fi';
+import { WiHumidity } from 'react-icons/wi';
+import { GiClothes } from 'react-icons/gi';
+import { SiSnowflake } from 'react-icons/si';
 
 const CityResult = ({ cityWeather, weatherSelection }) => {
 
@@ -29,7 +29,6 @@ const CityResult = ({ cityWeather, weatherSelection }) => {
   } = cityWeather
 
   return (
-    // add conditional css class here mentioned in first lessons on react
     <div>
       <h3>{city}, {country}</h3>
       {
@@ -73,4 +72,4 @@ const CityResult = ({ cityWeather, weatherSelection }) => {
   )
 }
 
-export default CityResult
+export default CityResult;
