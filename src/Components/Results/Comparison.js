@@ -42,7 +42,7 @@ const Comparison = ({ userWeather, uncleWeather, weatherSelection }) => {
         }
         {
           !humiditySelected ? null : (
-            <li>Your Uncle is {Math.abs(comparison.humidityPerc)}% {comparison.humidityPerc > 0 ? 'more likely' : 'less likely'} to work up a sweat*</li>
+            <li>Your Uncle is {Math.abs(comparison.humidityPerc)}% {comparison.humidityPerc > 0 ? 'less likely' : 'more likely'} to have dry skin*</li>
           )
         }
         {

@@ -8,7 +8,7 @@ const Header = () => {
           <SiSnowflake className='logo' />
           <h1>How Cold Is Your Uncle</h1>
         </div>
-        <p>Real time weather conditions</p>
+        <p>Local weather in two places, for all your small-talk needs</p>
       </div>
     </header>
   )
