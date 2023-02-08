@@ -5,7 +5,7 @@ import Comparison from './Comparison';
 const Results = ({ userWeather, neighborWeather, weatherSelection, setApiCallInProgress }) => {
   useEffect(() => {
     setApiCallInProgress(false);
-  }, []);
+  }, [setApiCallInProgress]);
   return (
     <section className="results">
       <h2>Results</h2>

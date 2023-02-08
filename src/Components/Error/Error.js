@@ -4,7 +4,7 @@ import { RiThunderstormsFill } from 'react-icons/ri';
 const Error = ({ errorMessage, setApiCallInProgress }) => {
   useEffect(() => {
     setApiCallInProgress(false);
-  }, []);
+  }, [setApiCallInProgress]);
 
   return (
     <div className="error">
