@@ -1,4 +1,4 @@
-const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
+const Comparison = ({ userWeather, uncleWeather, weatherSelection }) => {
   const {
     temperatureSelected,
     cloudSelected,
@@ -7,7 +7,7 @@ const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
     twilightSelected
   } = weatherSelection
 
-  const comparison = calcDiff(userWeather, neighborWeather);
+  const comparison = calcDiff(userWeather, uncleWeather);
 
   function calcDiff(weatherObj1, weatherObj2) {
     const diffObj = {};
@@ -26,10 +26,10 @@ const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
         {
           !temperatureSelected ? null : (
             <>
-              <li>Your neighbor is {Math.round(Math.abs(comparison.temp) * 100) / 100}°C {
+              <li>Your Uncle is {Math.round(Math.abs(comparison.temp) * 100) / 100}°C {
                 (comparison.temp) > 0 ? 'warmer' : 'colder'
               }</li>
-              <li>Your neighbor feels {Math.round(Math.abs(comparison.feelTemp) * 100) / 100}°C {
+              <li>Your Uncle feels {Math.round(Math.abs(comparison.feelTemp) * 100) / 100}°C {
                 (comparison.feelTemp) > 0 ? 'warmer' : 'colder'
               }</li>
             </>
@@ -37,22 +37,22 @@ const Comparison = ({ userWeather, neighborWeather, weatherSelection }) => {
         }
         {
           !windSelected ? null : (
-            <li>Your neighbor's city is {comparison.windSpeed > 0 ? 'more' : comparison.windSpeed < 0 ? 'less' : 'just as'} windy</li>
+            <li>Your Uncle's city is {comparison.windSpeed > 0 ? 'more' : comparison.windSpeed < 0 ? 'less' : 'just as'} windy</li>
           )
         }
         {
           !humiditySelected ? null : (
-            <li>Your neighbor is {Math.abs(comparison.humidityPerc)}% {comparison.humidityPerc > 0 ? 'more likely' : 'less likely'} to work up a sweat*</li>
+            <li>Your Uncle is {Math.abs(comparison.humidityPerc)}% {comparison.humidityPerc > 0 ? 'less likely' : 'more likely'} to have dry skin*</li>
           )
         }
         {
           !cloudSelected ? null : (
-            <li>Your neighbor is having a {comparison.cloudCover > 10 ? 'more' : comparison.cloudCover < -10 ? 'less' : 'similarly'} cloudy day</li>
+            <li>Your Uncle is having a {comparison.cloudCover > 10 ? 'more' : comparison.cloudCover < -10 ? 'less' : 'similarly'} cloudy day</li>
           )
         }
         {
           !twilightSelected ? null : (
-            <li>Your neighbor's gets {comparison.daylightInMin === 0 ? 'the same amount of' : `${Math.abs(comparison.daylightInMin)} minutes`} {comparison.daylightInMin > 0 ? 'more' : 'less'} daylight</li>
+            <li>Your Uncle gets {comparison.daylightInMin === 0 ? 'the same amount of' : `${Math.abs(comparison.daylightInMin)} minutes`} {comparison.daylightInMin > 0 ? 'more' : 'less'} daylight</li>
           )
         }
       </ul>
