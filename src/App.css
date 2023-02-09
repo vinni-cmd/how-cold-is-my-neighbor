@@ -286,11 +286,11 @@ a:focus {
 
 @keyframes circle {
   0% {
-    clip-path: circle(75%);
+    opacity: 1;
   }
 
   100% {
-    clip-path: circle(0%);
+    opacity: 0;
     display: none;
   }
 }
