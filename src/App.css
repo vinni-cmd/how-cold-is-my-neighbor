@@ -265,7 +265,7 @@ a:focus {
 }
 
 .page-loading.hide {
-  animation: circle 1.2s 1.5s ease-in forwards;
+  animation: fade 3s 1.5s ease-in-out forwards;
 }
 
 .page-loading>* {
@@ -284,15 +284,23 @@ a:focus {
   }
 }
 
-@keyframes circle {
+@keyframes fade {
   0% {
     opacity: 1;
   }
-
+  90% {
+    opacity: 0;
+    display: none;
+  }
+  95% {
+    opacity: 0;
+    display: none;
+    clip-path: circle(100%);
+  }
   100% {
     opacity: 0;
-    z-index: -1;
     display: none;
+    clip-path: circle(0%);
   }
 }
 
