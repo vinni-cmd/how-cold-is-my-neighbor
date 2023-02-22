@@ -2,13 +2,13 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import { populateWeatherData } from './modules/apis';
 // components
-import Header from './Components/Header/Header';
-import Footer from './Components/Footer/Footer';
-import Form from './Components/Form/Form';
-import Results from './Components/Results/Results';
-import Error from './Components/Error/Error';
-import FormLoading from './Components/Loading/FormLoading';
-import PageLoading from './Components/Loading/PageLoading';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import Form from './Components/Form';
+import Results from './Components/Results';
+import Error from './Components/Error';
+import FormLoading from './Components/FormLoading';
+import PageLoading from './Components/PageLoading';
 
 function App() {
   const [userWeather, setUserWeather] = useState({});

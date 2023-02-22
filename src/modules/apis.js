@@ -1,6 +1,6 @@
 import { calcWindDirection, getLocalTime, calcTimeDiffInMin } from "./utilities";
 
-const populateWeatherData = async (location, setStateFunction, setErrorFunction) => {
+const populateWeatherData = async (location, setStateFunction, setErrorMessage) => {
   const url = new URL('https://api.openweathermap.org/data/2.5/weather');
   url.search = new URLSearchParams({
     appid: '2f2490bb3753f1067ab2e758ffc26e39',
@@ -9,11 +9,19 @@ const populateWeatherData = async (location, setStateFunction, setErrorFunction)
   });
   try {
     const data = await fetch(url);
-    const response = await data.json();
-    const curatedWeatherDetails = buildAppWeatherObject(response);
-    setStateFunction(curatedWeatherDetails);
+    if (data.ok) {
+      const response = await data.json();
+      const curatedWeatherDetails = buildAppWeatherObject(response);
+      setStateFunction(curatedWeatherDetails);
+    } else {
+      throw new Error(data.statusText);
+    }
   } catch (error) {
-    setErrorFunction(`'${location}' not found. Please ensure your locations are limited to settlements on planet Earth`);
+    if (error.message === 'Not Found') {
+      setErrorMessage(`'${location}' not found. Please ensure your locations are limited to settlements on planet Earth`);
+    } else {
+      setErrorMessage(`${error}. Please redirect all your rage and disappointment towards the https://openweathermap.org/ team!`)
+    }
   }
 }
 
